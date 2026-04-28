@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <!-- ↓ This one line loads ALL of Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <title>Menu | La Bonita Donuts</title>
+</head>
+
+<body class="bg-pink-50 text-gray-800">
+
+  <!-- Start adding Tailwind classes here! -->
+  <!--NAVBAR-->
+  <nav class="bg-purple-400 text-white p-4 flex justify-between items-center">
+  <div class="space-x-4">
+    <a href="index.html" class="hover:text-green-200 transition duration-300">Home</a>
+    <a href="about.html" class="hover:text-green-200 transition duration-300">About</a>
+    <a href="menu.html" class="text-green-300 font-semibold">Menu</a>
+    <a href="reviews.html" class="hover:text-green-200 transition duration-300">Reviews</a>
+    <a href="contact.html" class="hover:text-green-200 transition duration-300">Contact</a>
+  </div>  
+  </nav>
+ 
+  <!--HERO-->
+  <header class="text-center py-10 bg-white shadow">
+    <h2 class="text-3xl md:text-4xl font-bold text-purple-400">Our Donuts</h2>
+    <p class="mt-2 text-gray-600">Fresh, sweet, and made daily</p>
+  </header>
+<!-- IMAGE CREDIT(AI-Generated)
+ All images created through Canvas
+ File/Page:menu.html/images
+ Image file: images/gummy donut.png, images/ferrerodonut.jpg, images/strawberry donut.png
+ Creator:Lidia with(Ai assistance)
+ Tool:Canvas
+ Date:4/13/2026
+ Notes: Ai-generated image created for educational purposes-->
+  <!--CARD GRID-->
+  <main class="p-6 md:p-10">
+    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+
+        <!--CARD-->
+        <div class="bg-white rounded-lg shadow p-4
+                    hover:-translate-y-1 hover:shadow-xl 
+                    transition duration-300">
+        <div class="overflow-hidden rounded mb-3">                       
+            <img src="images/gummydonut.png" alt="White icing donut with gummy bears and colorful sprinkles on top" class="w-full transition-transform duration-500 hover:scale-110">
+        </div> 
+            <h3 class="text-xl font-bold text-purple-600">Gummy Sprinkle</h3>
+            <p class="text-gray-600">$2.50</p>
+        </div>
+        <!--CARD-->
+        <div class="bg-white rounded-lg shadow p-4
+                    hover:-translate-y-1 hover:shadow-xl 
+                    transition duration-300">
+        <div class="overflow-hidden rounded mb-3">
+            <img src="images/ferrerodonut.jpg" alt="Donut with chocolate icing and mini ferrero chocolates on top" class="w-full transition-transform duration-500 hover:scale-110">
+        </div>
+            <h3 class="text-xl font-bold text-purple-600">Chocolate Ferrero Glaze</h3>
+            <p class="text-gray-600">$2.75</p>
+        </div>
+    
+        <!--CARD-->
+        <div class="bg-white rounded-lg shadow p-4
+                    hover:-translate-y-1 hover:shadow-xl 
+                    transition duration-300">
+        <div class="overflow-hidden rounded mb-3">
+            <img src="images/strawberrydonut.png" alt="white powdered donut with strawberry filling" class="w-full transition-transform duration-500 hover:scale-110">
+        </div>
+            <h3 class="text-xl font-bold text-purple-600">Strawberry Gansito</h3>
+            <p class="text-gray-600">$3.00</p>
+        </div>
+
+    </div>
+
+    <!--BUTTON-->
+    <div class="text-center mt-10">
+        <a href="contact.html"
+        class="bg-purple-400 text-white px-6 py-3 rounded-full font-semibold hover:bg-purple-700 transition duration-300">
+        ORDER NOW
+        </a>
+    </div>
+  </main>
+
+  <!--FOOTER-->
+  <footer class="bg-purple-400 text-white text-center p-4 mt-10">
+    <p>&copy; 2026 Lidia Bernal | La Bonita Donuts </p>
+  </footer>
+
+</body>
+</html>

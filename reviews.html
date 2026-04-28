@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Bonita Donuts | Reviews </title>
+    <!-- Existing stylesheet-->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Reusing fonts for consistency-->
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+<!--HEADER (same as other pages for consistency)-->
+<header>
+   <div class="brand">
+   <img src="images/mini-donut-with-pink-frosting.jpg" alt="pink donut with colorful sprinkles" class="brand-icon">
+   <span>La Bonita Donuts</span>
+</div>
+<!--Desktop Nav-->
+<nav class="desktop-nav main-nav" aria-label="Primary navigation">
+  <a href="index.html" >Home</a> 
+  <a href="about.html">About Us</a>
+  <a href="menu.html">Menu</a>
+  <a href="reviews.html" aria-current="page">Reviews</a>
+  <a href="contact.html">Contact Us</a>
+</nav>
+<!--Mobile Toggle-->
+<button class="mobile-toggle" id="mobileToggle" aria-label="Open Navigation" aria-expanded="false"> 
+  <span aria-hidden="true"></span>
+</button>
+</header>    
+<!--Mobile Slide-in Menu-->
+<nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation">
+  <a href="index.html">Home</a> 
+  <a href="about.html">About Us</a>
+  <a href="menu.html">Menu</a>
+  <a href="reviews.html"  class="active">Reviews</a>
+  <a href="contact.html">Contact Us</a> 
+</nav>
+
+<main>
+<!--============================
+HERO: strong entry
+================================-->
+<!-- AI ASSISTANCE 
+ Tool: ChatGPT
+ Tool: Canva
+ Date:4/27/26
+ Prompt: create an image of A warm, cozy, and inviting donut shop interior
+called “La Bonita Donuts” with soft natural lighting coming through large windows.
+A diverse group of happy customers sitting at small tables enjoying colorful fresh donuts and coffee. -->
+
+<section class="hero">
+  <div class="hero-media">
+    <img src="images/review-hero.jpg">
+  </div>
+
+  <div class="hero-inner">
+    <h1>What Our Customers Say</h1>
+    <p>Real Stories. Real smiles. Real Donuts. 
+  </p>
+  </div>
+</section>
+
+<section class="media-intro fade-in">
+  <p> Experience La Bonita through sound, story, and video.
+   Real voices behind every donut 🍩
+  </p>
+</section>
+<!--===========================
+INTERACTIVE MEDIA SWITCHER:
+Lets users choose how they
+experience reviews
+===============================-->
+<section class="media-tabs">
+
+  <div class="tab-buttons" role="tablist">
+    <button class="tab active" data-tab="video" role="tab" aria-selected="true">📽️ Video</button>
+    <button class="tab" data-tab="audio">🎧 Audio</button>
+    <button class="tab" data-tab="text">💬 Reviews</button>
+  </div>
+</section>
+
+<!--AI ASSISTANCE
+TOOL: ChatGPT
+Date: 4/27/2026
+prompt: prompt for a AI-generated video-->
+
+<!-- AI ASSISTANCE
+ tool: Microsoft Clipchamp
+ Date:4/27/26
+ Crated Ai-video -->
+
+
+<!--===========VIDEO==============-->
+<div class="tab-content active" id="video">
+
+  <h2>Customer Video Review </h2>
+  <video id="reviewVideo" controls poster="media/review-poster.JPG">
+    <source src="media/video-review.mp4" type="video/mp4">
+
+    <!--Accessibility-->
+    <track src="media/review-captions.vtt"
+          kind="captions"
+          srclang="en"
+          label="English"
+          default>
+
+   Your browser does not support video.
+  </video>
+
+  <!--Custom interaction-->
+  <button id="videoToggle">Play / Pause</button>
+
+  <!--Accessible summary-->
+  <p class="media-description">
+    A loyal customer shares why La Bonita Donuts is part of their daily routine.
+  </p>
+
+</div>
+
+<!--=======AUDIO================-->
+<div class="tab-content" id="audio">
+
+  <h2>Audio Testimonial</h2>
+  <audio controls>
+    <source src="media/review-audio.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <!--Transcript toggle (Accessibility + Interaction)-->
+  <button id="toggleTranscript" aria-controls="transcript" aria-expanded="false">
+    Show Transcript
+  </button>
+
+  <div id="transcript" hidden>
+    <p>
+      "You Know I never thought donuts could make a morning feel this special, 
+      but sitting here at La Bonita Donuts, surrounded by all these fresh, colorful treats,
+       it's impossible not to smile. The donuts are soft, fluffy, and you can really taste 
+       how fresh they are, like they were just made minutes ago! I love how there's something
+      for everyone, from classic glaze to wild flavors I've never seen anywhere else. If you're looking for 
+      somewhere to start your day on a happy note, La Bonita Donuts is the spot!"."
+    </p>
+  </div>
+</div>
+
+<!--AI ASSISTANCE
+Tool: ChatGPT
+Date:4/27/26
+Where: reviews.html
+WHat did AI do: Gave me prompts for reviews-->
+
+<!--============REVIEW TRACK (Slides move inside)================-->
+<div class="carousel fade-in">
+  <h2>Customer Reviews</h2>
+
+<div class="carousel-track" id="carouselTrack">
+
+    <article class="review slide">
+      <p>★★★★★"Best donuts in town!"</p>
+      <span>- Maria</span>
+    </article>
+
+    <article class="review slide">
+      <p>★★★★★Friendly staff and amazing flavors."</p>
+      <span>- Leo</span>
+    </article>
+
+    <article class="review slide">
+      <p>★★★★★"My kids love coming here every weekend!"</p>
+      <span>-Sophia</span>
+    </article>
+
+    <article class="review slide">
+      <p>★★★★★"Best service!"</p>
+      <span>- Matthew</span>
+    </article>
+
+  </div>
+  <!--Navigation Buttons-->
+  <button class="carousel-btn prev" id="prevBtn" aria-label="Previous review">⬅</button>
+  <button class="carousel-btn next" id="nextBtn" aria-label="Next review">➡</button>
+
+</div>
+
+</main>
+    
+    <footer class="site-footer">
+    <p>&copy; 2026 Lidia Bernal | La Bonita Donuts </p>
+</footer>
+
+<script src="js/script.js"></script>
+</body>
+</html>

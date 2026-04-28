@@ -1,0 +1,605 @@
+/*===============================
+1) GLOBAL RESET :
+ensures consistent layout calculations
+=================================*/
+* {
+    margin: 0;/* removes default browser margin*/
+    padding: 0; /* removes default browser padding*/
+    box-sizing: border-box;/* keeps padding inside element width*/
+}
+
+/*==================================
+2) DESIGN VARIABLES (CSS TOKENS)
+-Stores colors throughout website
+-Design easier to maintain
+=====================================*/
+:root {
+  --purple: #9F6090; /*Primary brand color*/
+  --green: #909f60; /* Accent color for links and highlights*/
+  --dark-grey: #333; /* Main text color */
+  --light-grey: #f7f7f7; /* Light background divider*/
+  --white: #ffffff; /* Default background color */
+}
+body {
+    font-family:"Roboto", sans-serif; /*Readable font*/
+    font-size: 16px; /* sized for readability*/
+    color: var(--dark-grey); /* default text color*/
+    background-color: var(--white); /*page background*/
+    line-height: 1.5; /*improves readability*/
+
+    overflow-x: hidden; /*Prevents horizontal scrolling*/
+}
+/*==============================
+Global Spacing
+creates consistent visual rhythm
+================================*/
+section{
+  margin-bottom: 4rem; /*space between sections*/
+}
+h1,h2,h3{
+  line-height: 1.2; /*tighter heading spacing*/
+}
+p {
+  max-width: 65ch; /*improves readability*/
+}
+
+/* ACCESSIBILITY FOCUS STYLES
+ensures keyboard users can clearly see which element is selected.*/
+a:focus,
+button:focus,
+input:focus,
+textarea:focus{
+  outline: 3px solid #ffbf47;
+  outline-offset: 3px;
+}
+
+/* MEDIA DEFAULTS*/
+img,
+video {
+    max-width: 100%; /*Prevents media from overflowing container width*/
+    height: auto; /* maintains aspect ratio*/
+    display: block; /*removes inline spacing*/
+}
+/*LINKS*/
+a {
+    color: inherit;/*removes default link colors and uses site's text color instead*/
+}
+main{
+    padding-top: 64px; /*adds space at the top so content is not hidden behind header*/
+}
+header{
+    display: flex; /*enables flex layout*/
+    justify-content: space-between; /*pushes items to opposite sides*/
+    align-items: center; /*vertically centers items*/
+    padding: 1rem; /*adds spacing inside header*/
+    background-color: var(--purple); /*sets header background*/
+    border-bottom: 2px solid var(--light-grey); /* adds a subtle separation line*/
+
+}
+.main-nav{
+  display: flex; /*lays out links in row*/
+  gap: 1.5rem; /*spacing between navigation links*/
+}
+.desktop-nav{
+  margin-left: auto; /*pushes nav to the right side*/
+}
+.mobile-nav{
+  display: none; /*hides mobile menu */
+  flex-direction: column;
+  background-color: var(--purple);
+  padding: 1rem;
+
+  position: absolute;
+  top: 70px;
+  left: 0;
+  width: 100%;
+  z-index: 999;
+}
+
+.mobile-nav.open {
+  display: flex;
+}
+
+.mobile-toggle {
+  display: none;
+}
+
+.brand { 
+  display: flex;
+  align-items: center; /*vertically aligns icon and texts*/
+  gap: 12px; /*consistent spacing in between*/
+  font-family: "Lora", serif; /*heading font*/ 
+  font-size: 1.5rem; /*slight bigger text for brand*/
+}
+.brand-icon {
+  width: 50px; /*logo width*/
+  height: 50px; /*logo height*/
+  object-fit: contain; /*prevents image distortion*/
+}
+
+.main-nav {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.main-nav a {
+  text-decoration: none;/*removes underline*/
+  color: var(--white);/*default text color for links*/
+  font-weight: 500; /*medium font weight*/
+  padding-bottom: 1.25rem; /*spacing for underline effect*/
+  border-bottom: 2px solid transparent; /*creates hover underline effect*/
+}
+
+/*hover and active page indicator*/
+.main-nav a:hover,
+.main-nav a.active {
+  color: var(--green);
+  border-bottom-color: var(--green);
+}
+
+/* --------------------
+   Hero Section
+--------------------- */
+.hero {
+  position: relative; /*allows overlay positioning*/
+}
+
+.hero-media img {
+  width: 100%; /*uses full width of container*/
+  height: 60vh; /*uses 60% of screen height*/
+  object-fit: cover; /*prevents stretching*/
+  display: block;
+}
+
+.hero-inner {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  text-align: center;
+  padding: 1.5rem;
+
+  
+  color: #111;/* dark text */
+
+  animation: fadeUp 0.8s ease;/*applies animation on load*/
+}
+/*keyframe animation definition*/
+@keyframes fadeUp{
+  from{
+    opacity: 0;/*start invisible*/
+    transform: translateY(20px);/*start slightly below*/
+  }
+  to{
+    opacity: 1;/*fade in*/
+    transform: translateY(0); /*move into position*/
+  }
+}
+
+/* Optional but HIGHLY recommended for readability */
+.hero-inner::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.7);
+  z-index: -1;
+}
+
+/* Text styling */
+.hero-kicker {
+  font-size: 4rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: 0.5rem;
+}
+
+.hero-inner h1 {
+  font-family: "Lora", serif;
+  font-size: 2.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.hero-inner p {
+  max-width: 520px;
+  margin-bottom: 1.5rem;
+}
+
+.cta-button {
+  background-color: var(--purple); /*primary button color*/
+  color: var(--white); /*text color*/
+
+  padding: 0.75rem 1.75rem; /*vertical and horizontal padding*/
+  border-radius: 999px;/*fully rounded shape*/
+  text-decoration: none; /*removes underline*/
+  font-weight: 500; /*medium font weight*/
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15); /*subtle shadow*/
+  transition: transform 0.2s ease, box-shadow 0.2s ease; /*smooth hover*/
+}
+/*Hover animation*/
+.cta-button:hover {
+    background-color: var(--green); /*changes hover color*/
+  transform: translateY(-2px); /* slight up movement*/
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.18);
+}
+
+/* --------------------
+   Card Section
+--------------------- */
+.cards {
+  padding: 4rem 1.5rem;
+  color: var(--purple);
+}
+
+.cards h2 {
+  font-family: "Lora", serif;
+  font-size: 2rem;
+  margin-bottom: 2.5rem;
+  text-align: center;
+}
+
+.card-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  align-items: stretch;
+}
+
+.card {
+  background-color: var(--white); /*card background*/
+  border-radius: 12px; /*rounded corners*/
+  padding: 1.75rem; /*internal spacing*/
+  text-align: left; /*text aligned to the left*/
+  display: flex; /*flex layout*/
+  flex-direction: column; /*stacks content vertically*/
+  height: 100%; /*ensures equal height cards*/
+  transition: transform 0.25s ease, box-shadow 0.25s ease; /*smooth animation*/
+}
+/*Hover Interaction*/
+.card:hover {
+  transform: translateY(-6px); /*moves card upward*/
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15); /*adds depth*/
+}
+
+.card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px; /*rounded-corners*/
+  margin-bottom: 1rem;
+
+  /*Image zoom effect*/
+  transition: transform 0.3s ease; /*smooth zoom animation*/
+}
+.card:hover img{
+  transform: scale(1.05);/*slight zoom-in effect*/
+}
+
+.card h3 {
+  font-family: "Lora", serif;
+  margin-bottom: 0.5rem;
+}
+
+.card p {
+  color: var(--purple);
+  margin-bottom: 1.25rem;
+}
+
+.card a {
+  color: var(--green);
+  text-decoration: none;
+  font-weight: 500;
+  margin-top: auto;
+}
+
+.card a:hover {
+  text-decoration: underline;
+}
+
+/* --------------------
+   Footer
+--------------------- */
+.site-footer {
+  background-color: var(--purple);
+  border-top: 1px solid;
+  text-align: center;
+  padding: 1.25rem;
+  color: var(--white);
+}
+
+/* --------------------
+   Responsive Breakpoints
+--------------------- */
+@media (min-width: 768px) {
+  .hero-kicker {
+    font-size: 3rem;
+  }
+
+  .card-container {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+
+  .main-nav {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+}
+
+#dataContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+#dataContainer .card{
+  background: #ffffff;
+  border: 1px solid #ddd;
+  padding: 15px;
+  border-radius: 10px; 
+  text-align: center;
+}
+#dataContainer img{
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+#errorMessage{
+  color:red;
+}
+#dynamic-content {
+  margin: 40px auto;
+  padding: 2rem;
+  max-width: 900px;
+  text-align: center;
+}
+  
+/*===============================
+CONTACT PAGE SPLIT LAYOUT
+Adds a two-column responsive design
+=================================*/
+
+.contact-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  min-height: 100vh;
+  padding: 4rem 1.5rem;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.contact-left {
+  font-family: "Lora", serif;
+  background-color: var(--green);
+  color: var(--white);
+  padding: 2rem;
+  border-radius: 16px;
+  overflow: hidden;
+}
+.contact-left h1{
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+.contact-left p{
+  max-width: 500px;
+  margin-bottom: 2rem;
+}
+.contact-right {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden; /*important so images respects rounding*/
+}
+
+.contact-right img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* CONTACT PAGE MAP OVERLAY
+Hidden by default and appears on hover or keyboard focus.
+Adds interactivity*/
+
+.map-overlay {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.619);
+  color: white;
+  padding: 1rem;
+  border-radius: 8px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.contact-right:hover .map-overlay {
+  opacity: 1;
+}
+
+.contact-right:focus-within .map-overlay{
+  opacity: 1;
+}
+
+
+/* Responsive layout (Tablet + Desktop)
+adjusts layout based on screen size*/
+@media (min-width: 1024px) {
+  .contact-layout {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (prefers-reduced-motion: reduce){
+  *{
+    transition: none;
+  }
+}
+
+/*===============================
+MEDIA / REVIEWS PAGE:
+creates interactive experience
+==================================*/
+.media-intro{
+  max-width: 700px;
+  text-align:center; /*centers texts*/
+  margin: 0 auto;
+  padding: 2rem 1rem; /*internal spacing*/
+}
+/*Tabs button container*/
+.tab-buttons {
+  display: flex; /*flex layout*/
+  gap: 1rem; /*space between buttons*/
+  margin-bottom: 1.5rem; /*space between tabs*/
+  flex-wrap: wrap; /* allows wrapping on small screens*/
+}
+/* Tab button style*/
+.tab{
+  padding: 10px 16px;/*button size*/
+  border-radius: 999px; /*pil shape*/
+  border: none; /*removes default border*/
+  cursor: pointer; /*cursor pointer on hover*/
+  background: var(--light-grey);/*default background*/
+  transition: all 0.2s ease;/*smooth hover effect*/
+}
+/*hover interaction*/
+.tab:hover{
+  background: var(--green);/*changes color on hover*/
+  color: var(--white);/*text contrast*/
+}
+/*active tab state*/
+.tab.active{
+  background:var(--purple);/*active color*/
+  color: var(--white);
+}
+/*==================================
+TAB CONTENT VISIBILITY
+only shows active content section
+====================================*/
+.tab-content{
+  display: none;/*hidden by default*/
+}
+.tab-content.active{
+  display: block;/*shows when active*/
+}
+/*===================================
+VIDEO STYLING
+polishes and adds spacing
+====================================*/
+video{
+  border-radius: 12px;/*rounded edges*/
+  margin-bottom: 1rem; /*space below video*/
+}
+/*===========================
+AUDIO PLAYER STYLING
+===============================*/
+audio{
+  width: 100%;/*full width to fill container*/
+  margin: 1rem 0; /* vertical spacing*/
+}
+/*================================
+REVIEW CARD (MEDIA PAGE)
+=================================*/
+.review{
+  background: var(--light-grey);/*soft background*/
+  padding: 1rem;/*internal spacing*/
+  border-radius: 18px;/*rounded-corners*/
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);/*soft floating effect*/
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+/*============================
+CAROUSEL CONTAINER
+wraps slides and hides overflow
+===============================*/
+.carousel{
+  background: linear-gradient(135deg, #fff7fb, #f7f7ff);/*light color for dimension*/
+  padding: 2rem 1rem;/*spacing inside container*/
+  border-radius: 20px;/*rounded border*/
+  position: relative;/*allows positioning of navigation buttons inside*/
+  overflow: hidden;/*hides non-active slides*/
+  max-width: 500px; /*keeps carousel compact and readable*/
+  margin: 2rem auto;/*centers the carousel horizontally on the page*/
+}
+/*========================
+CAROUSEL TRACK
+holds all slides in a row 
+=========================*/
+.carousel-track{
+  display: flex;/*places slides side-by-side horizontally*/
+  transition: transform 0.4s ease;/*smooth animation when sliding*/
+}
+/*========================
+INDIVIDUAL SLIDE
+each review takes full width of carousel
+==========================*/
+.slide{
+  flex: 0 0 100%; /*ensures each slide takes 100% width*/
+
+  display: flex;/*centers review content inside slide*/
+  align-items: center;/*vertical centering*/
+  justify-content: center;/*horizontally centering*/
+}
+/*===========================
+CAROUSEL BUTTONS
+navigation arrows for user interaction
+============================*/
+.carousel-btn{
+  position: absolute;/*positions buttons on top of carousel*/
+  top: 50%; /*vertically centers button*/
+  transform: translateY(-50%);/*adjusts for perfect centering*/
+  background: var(--purple);/*brand color*/
+  color: var(--white);/*ensures contrast for accessibility*/
+  border: none;/*removes default button styling*/
+  padding: 0.5rem 0.75rem; /*increases clickable area*/
+  cursor: pointer;/*indicates interactivity*/
+  border-radius: 50%;/*circular button design*/
+}
+/*Left button*/
+.carousel-btn.prev{
+  left: 10px;/*places button slightly inside left edge*/
+}
+/*Right button*/
+.carousel-btn.next{
+  right: 10px;/*places button slightly inside right edge*/
+}
+/*Hover effect*/
+.carousel-btn:hover{
+  background: var(--green);/*changes color to show interactivity*/
+}
+/*===========================
+SCROLL ANIMATION
+adds motion as users scroll
+=============================*/
+.fade-in{
+  opacity: 0;/*hidden initially*/
+  transform: translateY(20px);/*slightly moved down*/
+  transition: 0.6s ease; /*smooth animation*/
+}
+.fade-in.visible{
+  opacity: 1;/*fully visible*/
+  transform: translateY(0);/*moves into place*/
+}
+
+/*============================
+ACCESSIBILITY IMPROVEMENTS
+===============================*/
+button{
+  font-family: inherit;/*makes sure buttons inherit font styles*/
+}
+/*improves navigation hover contrast*/
+.main-nav a:hover,
+.main-nav a.active{
+  color: #c6ff8a;/*brighter green for better visibility*/
+}

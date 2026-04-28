@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name ="referrer" content="strict-origin-when-cross-origin">
+    <title>La Bonita Donuts | Home</title>
+    <link rel="stylesheet" href="css/style.css">
+     <link href="https://fonts.googleapis.com/css2?family=Lora:wght@600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+
+</head>
+
+<!-- AI Assistance
+ Tool: Chatgpt
+ Date:2/3/2026
+ Where: index.html
+ What did AI do: provided proper links to google fonts
+ Prompt summary: "How can I link the fonts Roboto and Lora to my index.html"
+ -->
+ <!--images/mini-donut-pink-frosting.jpg
+ https://www.hiclipart.com/free-transparent-background-png-clipart-zuzgn
+ Background edited with AI to match background color to header.
+  -->
+<body>
+<header>
+   <div class="brand">
+   <img src="images/mini-donut-with-pink-frosting.jpg" alt="pink donut with colorful sprinkles" class="brand-icon">
+   <span>La Bonita Donuts</span>
+</div>
+<!--Desktop Nav-->
+<nav class="desktop-nav main-nav" aria-label="Primary navigation">
+  <a href="index.html"  aria-current="page">Home</a> 
+  <a href="about.html">About Us</a>
+  <a href="menu.html">Menu</a>
+  <a href="reviews.html">Reviews</a>
+  <a href="contact.html">Contact Us</a>
+</nav>
+<!--Mobile Toggle-->
+<button class="mobile-toggle" id="mobileToggle" aria-label="Open Navigation" aria-expanded="false"> 
+  <span aria-hidden="true"></span>
+</button>
+</header>    
+<!--Mobile Slide-in Menu-->
+<nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation">
+  <a href="index.html" class="active" aria-current="page">Home</a> 
+  <a href="about.html">About Us</a>
+  <a href="menu.html">Menu</a>
+  <a href="reviews.html">Reviews</a>
+  <a href="contact.html">Contact Us</a> 
+</nav>
+
+<!--MAIN-->
+<!-- IMAGE CREDIT(AI-Generated)
+ All images created through Canvas
+ File/Page:index.html/images
+ Image file: images/bonitadonuts.jpg, images/about.jpg, images/menu.jpg,  images/reviews.jpg
+ Creator:Lidia with(Ai assistance)
+ Tool:Canvas
+ Date:2/3/26
+ Notes: Ai-generated image created for educational purposes
+ -->
+
+<!-- AI Assistance
+ Tool: Chatgpt
+ Date:2/3/2026
+ Where: css/stylesheet
+ What did AI do: Provide assistance placing hero text centered on the Hero image
+ Prompt summary: "what me step by step to get my hero-text centered on the Hero-image
+ This was used after trying to correct it myself following w3schools "How to create hero image" -->
+
+
+<main>
+    <section class="hero" aria-label="Hero section">
+
+        <div class="hero-media" aria-hidden="true">
+            <img src="images/bonitadonuts.jpg" alt="Assorted donuts with colorful icing">
+        </div>
+        <!--Hero Text-->
+        <div class="hero-inner">
+            <p class="hero-kicker">La Bonita Donuts</p>
+            <h1>Fresh Donuts Made Daily </h1>
+            <p>Sweet and delicious donuts made with love for our community.</p>
+            <a href="menu.html" class="cta-button">Our Menu</a>
+        </div>
+    </section>
+    <!-- Card Section-->
+     <section class="cards">
+        <h2>Explore La Bonita</h2>
+
+        <div class="card-container">
+
+            <article class="card">
+                <img src="images/about.jpg" alt="Outside photo of La Bonita shop">
+                <h3> Our Story</h3>
+                <p> Learn how La Bonita became a local favorite</p>
+                <a href="about.html">Read More</a>
+            </article>
+
+            <article class="card">
+                <img src="images/menu.jpg" alt="Assorted donuts and drinks">
+                <h3>Our Menu</h3>
+                <p>Discover our delicious donuts and various drinks.</p>
+                <a href="menu.html">View Menu</a>
+            </article>
+
+            <article class="card">
+                <img src="images/reviews.jpg" alt="Happy customers enjoying donuts and drinks">
+                <h3>Customer Reviews</h3>
+                <p>See what customers are saying.</p>
+                <a href="reviews.html">See Reviews</a>
+            </article>
+
+            <article class="card">
+                <img src="images/contact.jpg" alt="Contact us">
+                <h3>Contact Us</h3>
+                <p>Location and Hours</p>
+                <a href="contact.html">Contact</a>
+            </article>
+        </div>
+     </section>
+
+     <section id="dynamic-content" class="section">
+        <h2>Products</h2>
+        <p>This is a dynamic section that fetches and displays real-time
+product data using Javascript and the Fetch API  </p>
+
+        <!--Controls-->
+        <button id="loadBtn" aria-label="Load product data">Load Products</button>
+
+        <!--Status-->
+        <p id="loadingMessage" style="display:none;">Loading...</p>
+        <p id="errorMessage"></p>
+
+        <!--Results-->
+        <div id="dataContainer"></div>
+     </section>
+
+
+</main>
+<script src="js/script.js"></script>
+
+<footer class="site-footer">
+    <p>&copy; 2026 Lidia Bernal | La Bonita Donuts </p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,373 @@
+/*===============================
+1) GLOBAL RESET :
+ensures consistent layout calculations
+=================================*/
+* {
+    margin: 0;/* removes default browser margin*/
+    padding: 0; /* removes default browser padding*/
+    box-sizing: border-box;/* keeps padding inside element width*/
+}
+
+/*==================================
+2) DESIGN VARIABLES (CSS TOKENS)
+-Stores colors throughout website
+-Design easier to maintain
+=====================================*/
+:root {
+  --purple: #9F6090; /*Primary brand color*/
+  --green: #909f60; /* Accent color for links and highlights*/
+  --dark-grey: #333; /* Main text color */
+  --light-grey: #f7f7f7; /* Light background divider*/
+  --white: #ffffff; /* Default background color */
+}
+/*=====================================
+3) BASE STYLE (MOBILE-FIRST) 
+these styles apply to smaller screens
+========================================*/
+body{
+    font-family: "Roboto", sans-serif; /* Readable font */
+    font-size: 16px; /* sized for readability*/
+    color: var(--dark-grey);/* default text color*/
+    background-color: var(--white); /*page background*/
+    line-height: 1.5; /*improves readability*/
+
+    overflow-x: hidden; /*Prevents horizontal scrolling*/
+}
+/*============================
+CONTENT CONTAINER
+centers content and limits maximum width
+so layout stays readable on larger screens
+=====================================*/
+.container{
+    max-width: 1100px; /*prevents content from stretching too wide*/
+    margin: 0 auto; /*centers content*/
+    padding: 0 1.5rem;/*adds side spacing on small screens*/
+}
+
+/*=======================================
+MEDIA DEFAULTS:
+ensures images and videos scale properly
+and do not overflow container
+========================================*/
+img,
+video {
+    max-width: 100%;/*Prevents media from overflowing container width*/
+    height: auto;/* maintains aspect ratio*/
+    display: block; /*removes inline spacing*/
+}
+/*=====================================
+LINK DEFAULTS
+removes default link colors and uses 
+site's text color instead
+======================================*/
+a {
+    color: inherit;
+}
+
+
+/*======================================
+MAIN CONTENT SPACING
+adds space at the top so content is not hidden
+behind header
+========================================*/
+main{
+    padding-top: 64px;
+}
+
+/*====================================
+HEADER LAYOUT (FLEXBOX)
+FlexBox uses to align the logo and 
+navigation horizontally and space them
+======================================*/
+header{
+    display: flex;/*enables flex layout*/
+    justify-content: space-between; /*pushes items to opposite sides*/
+    align-items: center; /*vertically centers items*/
+    padding: 1rem; /*adds spacing inside header*/
+    background-color: var(--purple);/*sets header background*/
+    border-bottom: 2px solid var(--light-grey); /* adds a subtle separation line*/
+}
+/*=================================
+NAVIGATION LAYOUT
+uses FlexBox to display navigation links
+in a row with equal spacing
+====================================*/
+.main-nav{
+    display: flex; /*lays out links in row*/
+    gap: 1.5rem; /*spacing between navigation links*/
+}
+.desktop-nav{
+    margin-left: auto; /*pushes nav to the right side*/
+}
+
+/*===================================
+MOBILE NAVIGATION DEFAULT
+activated when mobile layout is activated
+=======================================*/
+.mobile-nav,
+.mobile-toggle{
+    display: none; /*hides mobile menu and toggle button*/
+}
+
+/*====================================
+BRAND AREA
+aligns logo icon and text side-by-side
+using FlexBox
+=====================================*/
+.brand{
+    display: flex;
+    align-items: center; /*vertically aligns icon and texts*/
+    gap: 12px; /*consistent spacing in between*/
+    font-family: "Lora", serif; /*heading font*/ 
+    font-size: 1.5rem; /*slight bigger text for brand*/
+}
+/*Logo Image Control*/
+
+.brand-icon {
+    width: 50px; /*logo width*/
+    height: 50px; /*logo height*/
+    object-fit: contain; /*prevents image distortion*/
+}
+
+/*=====================================
+NAVIGATION LINK STYLING
+styles links and adds hover effects
+=======================================*/
+
+.main-nav a{
+    text-decoration: none;/*removes underline*/
+    color: var(--white); /*default text color for links*/
+    font-weight: 500; /*medium font weight*/
+    padding-bottom: 0.25rem; /*spacing for underline effect*/
+
+    border-bottom: 2px solid transparent;/*creates hover underline effect*/
+}
+/*hover and active page indicator*/
+
+.main-nav a:hover,
+.main-nav a.active {
+    color: var(--green);
+    border-bottom-color: var(--green);
+}
+
+/*========================================
+HERO SECTION 
+large feature image with centered text
+-used to highlight the main message
+===========================================*/
+.hero {
+    position: relative;/*allows overlay positioning*/
+}
+
+/*Hero background image*/
+.hero-media img{
+    width: 100%; /*uses full width of container*/
+    height: 60vh;/*uses 60% of screen height*/
+    object-fit: cover;/*prevents stretching*/
+}
+/*============================
+HERO TEXT OVERLAY
+-Flexbox centers text vertically and horizontally
+-Absolute positioning places it over image
+==================================*/
+.hero-inner{
+    position: absolute;/*overlay over image*/
+    inset: 0;/*stretches overlay to cover parent*/
+    z-index: 2;/* makes sure overlay is on top of image*/
+
+    display: flex; /*enables flex layout for text*/ 
+    flex-direction: column; /*stacks text vertically*/
+
+    justify-content: center;/*centers texts vertically*/
+    align-items: center; /*centers text horizontally*/
+
+    text-align: center; /*centers text lines*/
+
+    padding: 1.5rem; /*spacing inside overlay*/
+
+    color: var(--dark-grey); /*text color*/
+}
+/*improves text readability over image*/
+.hero-inner::before {
+    content: "";/*empty pseudo-element*/
+    position: absolute; /*overlays hero-inner*/
+    inset: 0; /*covers entire hero-inner*/
+
+    background: rgba(254, 250, 250, 0.7); /*semi-transparent white overlay*/
+
+    z-index: -1; /*places overlay behind text*/
+}
+/*hero styling*/
+.hero-kicker {
+    font-size: 4rem; /*large heading size*/
+    font-weight: 700; /*bold font*/
+    letter-spacing: 1px; /*spacing between letters*/
+}
+.hero-inner h1{
+    font-family: "Lora", serif; /*heading font*/
+    font-size: 2.5rem; /*main-heading size*/
+}
+.hero-inner p{
+    max-width: 520px; /*limits paragraph width for readability*/
+}
+/*============================
+ABOUT SECTION (CSS GRID)
+creates responsive layout
+image and text stack on mobile and
+form two columns on larger screens
+=============================*/
+.about-section{
+    display: grid;/*enables CSS Grid layout*/
+    grid-template-columns: 1fr; /*mobile= stacked*/
+    gap: 3rem;/* spacing between image and text*/
+    padding: 2rem; /*inside spacing around section*/
+    align-items: center;/*centers items*/
+    margin: 4rem auto; /* vertical spacing and centers section horizontally*/
+}
+.about-section img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px; /*soft rounded corners*/
+}
+.about-text{
+    padding: 1rem; /*inside spacing in text box*/
+    max-width: 600px;/*improves readability*/
+}
+/*===================
+REVERSE LAYOUT
+======================*/
+.about-section.reverse{
+    display: grid; /*makes ure it is Grid*/
+    grid-template-columns: 1fr 1fr; /*two columns*/
+    align-items: center; /*vertical alignment*/
+    gap: 3rem;
+}
+.about-section.reverse img{
+    order: -1; /*pushes image to the first column*/
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 10px;
+}
+.reverse .story-text{
+    direction: ltr;
+}
+
+/*=================================
+VALUES SECTION (FLEXBOX)
+displays feature cards describing values
+==================================*/
+.about-values{
+    padding: 2rem; /*spacing around the section*/
+    text-align: center; /*centers text*/
+}
+.values-container {
+    display: flex; /*arranges cards in row/columns*/
+    flex-direction: column; /*stack cards vertically(mobile)*/
+    gap: 1.5rem; /* spacing between each card*/
+    margin-top: 1.5rem; /*space above the cards*/
+}
+.value{
+    background: var(--light-grey); /*card background color*/
+    padding: 1.5rem; /*inner spacing inside card*/
+    border-radius: 10px; /*rounded corners*/
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08); /*subtle shadow for depth*/
+}
+
+/*==================================
+CALL TO ACTION BUTTON
+-encourages interaction
+===================================*/
+.about-cta{
+    display: flex; /*enables flex*/
+    flex-direction: column; /*stacks vertically*/
+    text-align: center;/*centers texts and button*/
+    padding: 2rem;/*internal spacing*/
+    background: var(--light-grey); /*section background color*/
+}
+.cta-button {
+  background-color: var(--purple);/*primary button color*/
+  color: var(--white); /*text color*/
+
+  padding: 0.75rem 1.75rem; /*vertical and horizontal padding*/
+  border-radius: 999px; /*fully rounded shape*/
+  text-decoration: none; /*removes underline*/
+  font-weight: 500; /*medium font weight*/
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15); /*subtle shadow*/
+  transition: transform 0.2s ease, box-shadow 0.2s ease; /*smooth hover*/
+  display: inline-block;/*allows margin to work*/
+  margin-top: 1.5rem;/* adds spacing between heading & CTA button*/
+  
+}
+/*Hover animation*/
+.cta-button:hover{
+    background-color: var(--green); /*changes hover color*/
+    transform: translateY(-2px);/* slight up movement*/
+}
+
+/*=================================
+FOOTER
+=================================*/
+ .site-footer{
+    text-align: center;/*centers footer content*/
+    padding: 1rem; /*internal spacing*/
+    background: var(--purple); /*footer background*/
+    color: var(--white); /*text color*/
+    margin-top: 2rem; /*space above footer*/
+ }
+
+ /*================================
+ MEDIA QUERY (TABLET 600px ) 
+ tablet breakpoint
+ ================================*/
+ @media (min-width:600px){
+  
+    .about-section{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        align-items: center; /*vertically centers content*/
+        gap: 3rem;
+
+    }
+    .about-section.reverse {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        align-items: center; /*vertically centers content*/
+        gap: 3rem;
+    }
+    .about-section img{
+        width: 100%; 
+        height: auto;
+    }
+
+    .values-container{
+        flex-direction: row; /*horizontal layout*/
+        justify-content: space-between; /*evenly spaces cards across row*/
+    }
+    .value{
+        flex: 1; /*cards take equal width in row*/
+    }
+    .hero-inner h1{
+        font-size: 2.8rem; /*larger heading for tablet screens*/
+    }
+ }
+ /*================================
+ MEDIA QUERY 2 (DESKTOP 900px)
+ desktop breakpoint
+ ==================================*/
+ @media (min-width:900px){
+ header{
+    padding: 1.25rem 3rem; /*horizontal padding for desktop*/
+ }
+ .about-section{
+    padding: 3rem 5rem; /*more spacing inside section*/
+ }
+
+ .values-container{
+    gap: 2rem; /*slightly larger spacing between cards*/
+ }
+ .hero-inner h1{
+    font-size: 3.2rem; /*bigger hero heading for desktop*/
+ }
+}

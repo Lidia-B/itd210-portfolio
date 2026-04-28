@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="js/script.js"></script>
+    <title>Contact | La Bonita Donuts</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header>
+   <div class="brand">
+   <img src="images/mini-donut-with-pink-frosting.jpg" alt="pink donut with colorful sprinkles" class="brand-icon">
+   <span>La Bonita Donuts</span>
+</div>
+<!--Desktop Nav-->
+<nav class="desktop-nav main-nav" aria-label="Primary navigation">
+  <a href="index.html">Home</a> 
+  <a href="about.html">About Us</a>
+  <a href="menu.html">Menu</a>
+  <a href="reviews.html">Reviews</a>
+  <a href="contact.html" aria-current="page">Contact Us</a>
+</nav>
+<!--Mobile Toggle-->
+<button class="mobile-toggle" id="mobileToggle" aria-label="Open Navigation" aria-expanded="false"> 
+  <span aria-hidden="true"></span>
+</button>
+</header>    
+<!--Mobile Slide-in Menu-->
+<nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation">
+  <a href="index.html">Home</a> 
+  <a href="about.html">About Us</a>
+  <a href="menu.html">Menu</a>
+  <a href="reviews.html">Reviews</a>
+  <a href="contact.html" class="active" aria-current="page">Contact Us</a> 
+</nav>
+
+<section class="hero" aria-label="Contact Hero Section">
+  <div class="hero-media" aria-hidden="true">
+    <img src="images/bonitadonuts.jpg" alt="multiple flavored donuts">
+  </div>
+
+  <div class="hero-inner">
+    <p class="hero-kicker">Get in Touch</p>
+    <h1>We'd Love to Hear From You</h1>
+    <p>Orders, questions, or feedback - send us a message anytime.</p>
+  </div>
+</section>
+
+<main class="contact-layout">
+  <!-- LEFT SIDE: FORM CONTENT -->
+   <section class="contact-left">
+    <h1> Contact La Bonita Donuts</h1>
+
+    <p>
+      Have a question or want to place a custom order?
+      Send us a message and we'll get back to you soon!
+    </p>
+
+    <!-- Form includes labels for accessibility and required fields.-->
+     <form class="contact-form">
+
+      <div class="form-row">
+        <div>
+          <label for="firstname">First Name :</label>
+          <input type="text" id="firstname" name="firstname" required>
+        </div>
+
+        <div>
+           <label for="lastname">Last Name :</label>
+          <input type="text" id="lastname" name="lastname" required>
+        </div>
+      </div>
+       
+      <div>
+      <label for="email">Email :</label>
+      <input type="email" id="email" name="email" required>
+      </div>
+
+      <h4>Place your order here:</h4>
+      <!-- Bakery Order Field-->
+       <select id="flavor"> 
+        <option value="">Choose Your Donut</option>
+
+        <option value="chocolate">Chocolate Ferreo Glaze</option>
+        <option value="sprinkle">Gummy Sprinkle</option>
+        <option value="Strawberry">Strawberry Gansito</option>
+       </select>
+
+       <label for="quantity">Quantity :</label>
+       <input type="number" id="quantity" name="quantity" min="1" max="24" value="1">
+      
+      <div>
+      <label for="message">Message : </label>
+      <textarea id="message" name="message" rows="4" required></textarea>
+      </div>
+
+      <!--CHECKBOX = interactive element-->
+      <label for="subscribe" class="checkbox">
+        <input type="checkbox" id="subscribe" name="subscribe">
+        Subscribe to our donut deals 🍩
+      </label>
+
+      <button type="submit" class="cta-button">Submit</button>
+     </form>
+     
+
+     <!-- Contact Info block-->
+   <div class="contact-info-box">
+   <p><strong>
+    📞 Phone: </strong>(555)123-Donut</p>
+   <p><strong>
+    📧 Email: </strong>Yummy@labonitadonuts.com</p>
+  </div>
+   </section>
+
+
+   <!--RIGHT SIDE: MAP/IMAGE-->
+   <section class="contact-right">
+   <img src="images/about.jpg"
+   alt="Front view of La Bonita Donuts shop">
+
+   <div class="map-overlay">
+    <h3>Visit Us 🍩 </h3>
+    <p>234 Yummy Street <br>Culpeper, VA</p>
+   </div>
+  </section>
+
+</main>
+
+
+    <footer class="site-footer">
+    <p>&copy; 2026 Lidia Bernal | La Bonita Donuts </p>
+</footer>
+</body>
+</html>
