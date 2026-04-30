@@ -3,32 +3,32 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
 
-  <!-- ↓ This one line loads ALL of Tailwind CSS -->
-  <script src="https://cdn.tailwindcss.com"></script>
-
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
   <title>Menu | La Bonita Donuts</title>
 </head>
-
-<body class="bg-pink-50 text-gray-800">
-
-  <!-- Start adding Tailwind classes here! -->
-  <!--NAVBAR-->
-  <nav class="bg-purple-400 text-white p-4 flex justify-between items-center">
-  <div class="space-x-4">
-    <a href="index.html" class="hover:text-green-200 transition duration-300">Home</a>
-    <a href="about.html" class="hover:text-green-200 transition duration-300">About</a>
-    <a href="menu.html" class="text-green-300 font-semibold">Menu</a>
-    <a href="reviews.html" class="hover:text-green-200 transition duration-300">Reviews</a>
-    <a href="contact.html" class="hover:text-green-200 transition duration-300">Contact</a>
-  </div>  
-  </nav>
- 
-  <!--HERO-->
-  <header class="text-center py-10 bg-white shadow">
-    <h2 class="text-3xl md:text-4xl font-bold text-purple-400">Our Donuts</h2>
-    <p class="mt-2 text-gray-600">Fresh, sweet, and made daily</p>
-  </header>
+<body>
+  <!--Header-->
+<header>
+   <div class="brand">
+   <img src="images/mini-donut-with-pink-frosting.jpg" alt="pink donut with colorful sprinkles" class="brand-icon">
+   <span>La Bonita Donuts</span>
+</div>
+<!--Desktop Nav-->
+<nav class="desktop-nav main-nav" aria-label="Primary navigation">
+  <a href="index.html">Home</a> 
+  <a href="about.html">About Us</a>
+  <a href="menu.html" class="active">Menu</a>
+  <a href="reviews.html">Reviews</a>
+  <a href="contact.html">Contact Us</a>
+</nav>
+<!--Mobile Toggle-->
+<button class="mobile-toggle" id="mobileToggle" aria-label="Open Navigation" aria-expanded="false"> 
+  <span aria-hidden="true"></span>
+</button>
+</header>    
 <!-- IMAGE CREDIT(AI-Generated)
  All images created through Canvas
  File/Page:menu.html/images
@@ -37,50 +37,50 @@
  Tool:Canvas
  Date:4/13/2026
  Notes: Ai-generated image created for educational purposes-->
-  <!--CARD GRID-->
-  <main class="p-6 md:p-10">
-    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+<main>
+ <!--HERO Section-->
+    <section class="hero" aria-label="Hero section">
 
+        <div class="hero-media" aria-hidden="true">
+            <img src="images/bonitadonuts.jpg" alt="Assorted donuts with colorful icing">
+        </div>
+        <!--Hero Text-->
+        <div class="hero-inner">
+            <p class="hero-kicker">Our Donuts</p>
+            <p>Fresh and Sweet </p>
+        </div>
+    </section>
+
+  <!--CARD GRID-->
+    <div class="card-container">
         <!--CARD-->
-        <div class="bg-white rounded-lg shadow p-4
-                    hover:-translate-y-1 hover:shadow-xl 
-                    transition duration-300">
-        <div class="overflow-hidden rounded mb-3">                       
-            <img src="images/gummydonut.png" alt="White icing donut with gummy bears and colorful sprinkles on top" class="w-full transition-transform duration-500 hover:scale-110">
-        </div> 
-            <h3 class="text-xl font-bold text-purple-600">Gummy Sprinkle</h3>
-            <p class="text-gray-600">$2.50</p>
-        </div>
-        <!--CARD-->
-        <div class="bg-white rounded-lg shadow p-4
-                    hover:-translate-y-1 hover:shadow-xl 
-                    transition duration-300">
-        <div class="overflow-hidden rounded mb-3">
-            <img src="images/ferrerodonut.jpg" alt="Donut with chocolate icing and mini ferrero chocolates on top" class="w-full transition-transform duration-500 hover:scale-110">
-        </div>
-            <h3 class="text-xl font-bold text-purple-600">Chocolate Ferrero Glaze</h3>
-            <p class="text-gray-600">$2.75</p>
-        </div>
+        <article class="card">
+          <img src="images/gummydonut.png" alt="White icing donut with gummy bears and colorful sprinkles on top">
+          <h3>Gummy Sprinkle</h3>
+          <p>$2.50</p>
+        </article>
+      
     
         <!--CARD-->
-        <div class="bg-white rounded-lg shadow p-4
-                    hover:-translate-y-1 hover:shadow-xl 
-                    transition duration-300">
-        <div class="overflow-hidden rounded mb-3">
-            <img src="images/strawberrydonut.png" alt="white powdered donut with strawberry filling" class="w-full transition-transform duration-500 hover:scale-110">
-        </div>
-            <h3 class="text-xl font-bold text-purple-600">Strawberry Gansito</h3>
-            <p class="text-gray-600">$3.00</p>
-        </div>
+          <article class="card">
+          <img src="images/ferrerodonut.jpg" alt="Chocolate icing donut with mini ferrero inside">
+          <h3>Chocolate Ferrero Glaze</h3>
+          <p>$2.75</p>
+        </article>
 
+        <!--CARD-->
+          <article class="card">
+          <img src="images/strawberrydonut.png" alt="white powdered donut with strawberry filling">
+          <h3>Strawberry Gansito</h3>
+          <p>$3.00</p>
+        </article>
     </div>
 
     <!--BUTTON-->
-    <div class="text-center mt-10">
-        <a href="contact.html"
-        class="bg-purple-400 text-white px-6 py-3 rounded-full font-semibold hover:bg-purple-700 transition duration-300">
+    <div class="button-center">
+      <a href="contact.html" class="cta-button">
         ORDER NOW
-        </a>
+      </a>
     </div>
   </main>
 
@@ -109,7 +109,7 @@
     <!--Location + Hours-->
     <div class="footer-col">
         <h3>Visit Us</h3>
-        <P>234 Yummy Street<br>Culpeper, VA</P>
+        <p>234 Yummy Street<br>Culpeper, VA</p>
 
         <h4>Hours</h4>
         <p>
@@ -133,7 +133,6 @@
         <a href="#" aria-label="Facebook"><i class="ph ph-facebook-logo"></i></a>
         <a href="#" aria-label="TikTok"><i class="ph ph-tiktok-logo"></i></a>
       </div>
-     </div>
 
     </div>
     <!-- Bottom Bar -->

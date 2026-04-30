@@ -209,7 +209,11 @@ header{
   max-width: 520px;
   margin-bottom: 1.5rem;
 }
-
+.button-center{
+  text-align: center; 
+  margin-top: 2rem;
+}
+ /* MAIN CTA BUTTON */
 .cta-button {
   background-color: var(--purple); /*primary button color*/
   color: var(--white); /*text color*/
@@ -218,14 +222,20 @@ header{
   border-radius: 999px;/*fully rounded shape*/
   text-decoration: none; /*removes underline*/
   font-weight: 500; /*medium font weight*/
+  display: inline-block; /*makes the padding work correctly*/
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15); /*subtle shadow*/
   transition: transform 0.2s ease, box-shadow 0.2s ease; /*smooth hover*/
 }
 /*Hover animation*/
 .cta-button:hover {
     background-color: var(--green); /*changes hover color*/
-  transform: translateY(-2px); /* slight up movement*/
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.18);
+  transform: translateY(-3px); /* slight up movement*/
+  box-shadow: 0 18px 35px rgba(0, 0, 0, 0.2);
+}
+/*active (click feedback)*/
+.cta-button:active{
+  transform: translateY(0px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
 }
 
 /* --------------------
@@ -706,9 +716,4 @@ ACCESSIBILITY IMPROVEMENTS
 ===============================*/
 button{
   font-family: inherit;/*makes sure buttons inherit font styles*/
-}
-/*improves navigation hover contrast*/
-.main-nav a:hover,
-.main-nav a.active{
-  color: #c6ff8a;/*brighter green for better visibility*/
 }
