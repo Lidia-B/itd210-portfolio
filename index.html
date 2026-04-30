@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="css/style.css">
      <link href="https://fonts.googleapis.com/css2?family=Lora:wght@600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
 
+     <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
 </head>
 
 <!-- AI Assistance
@@ -117,30 +119,66 @@
                 <a href="contact.html">Contact</a>
             </article>
         </div>
-     </section>
-
-     <section id="dynamic-content" class="section">
-        <h2>Products</h2>
-        <p>This is a dynamic section that fetches and displays real-time
-product data using Javascript and the Fetch API  </p>
-
-        <!--Controls-->
-        <button id="loadBtn" aria-label="Load product data">Load Products</button>
-
-        <!--Status-->
-        <p id="loadingMessage" style="display:none;">Loading...</p>
-        <p id="errorMessage"></p>
-
-        <!--Results-->
-        <div id="dataContainer"></div>
-     </section>
-
 
 </main>
 <script src="js/script.js"></script>
 
 <footer class="site-footer">
+
+    <!--Footer Grid Container-->
+    <div class="footer-container">
+    <!--Brand-->
+    <div class="footer-col">
+        <h2>La Bonita Donuts🍩</h2>
+        <p>Fresh, handmade donuts served daily.</p>
+    </div>
+
+    <!--Navigation Links-->
+    <div class="footer-col">
+        <h3>Quick Links</h3>
+       <nav class="footer-nav">
+        <a href="index.html">Home</a>
+        <a href="about.html">About Us</a>
+        <a href="menu.html">Menu</a>
+        <a href="reviews.html">Reviews</a>
+        <a href="contact.html">Contact</a>
+       </nav>
+    </div>
+
+    <!--Location + Hours-->
+    <div class="footer-col">
+        <h3>Visit Us</h3>
+        <P>234 Yummy Street<br>Culpeper, VA</P>
+
+        <h4>Hours</h4>
+        <p>
+            Mon-Fri: 7am - 6pm<br>
+            Sat-Sun: 7am - 8pm
+        </p>
+    </div>
+
+    <!--Email Signup-->
+      <div class="footer-col">
+    <div><h3>Stay Updated</h3>
+    <form class="form">
+      <input type="email" placeholder="@YourEmail" required>
+      <button>Subscribe</button>
+    </form>
+
+    <!-- Socials-->
+     <div class="socials">
+        <a href="#" aria-label="Twitter"><i class="ph ph-twitter-logo"></i></a>
+        <a href="#" aria-label="Instagram"><i class="ph ph-instagram-logo"></i></a>
+        <a href="#" aria-label="Facebook"><i class="ph ph-facebook-logo"></i></a>
+        <a href="#" aria-label="TikTok"><i class="ph ph-tiktok-logo"></i></a>
+      </div>
+     </div>
+
+    </div>
+    <!-- Bottom Bar -->
+     <div class="footer-bottom">
     <p>&copy; 2026 Lidia Bernal | La Bonita Donuts </p>
+</div>
 </footer>
 </body>
 </html>

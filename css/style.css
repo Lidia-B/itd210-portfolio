@@ -269,11 +269,11 @@ header{
 }
 
 .card img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-  border-radius: 8px; /*rounded-corners*/
-  margin-bottom: 1rem;
+  width: 100%; /*makes image fill card width*/
+  height: 200px; /*sets consistent image height*/
+  object-fit: cover; /*prevents distortion by cropping image*/
+  border-radius: 8px; /*rounds image corners*/
+  margin-bottom: 1rem; /*space below image*/
 
   /*Image zoom effect*/
   transition: transform 0.3s ease; /*smooth zoom animation*/
@@ -283,35 +283,144 @@ header{
 }
 
 .card h3 {
-  font-family: "Lora", serif;
-  margin-bottom: 0.5rem;
+  font-family: "Lora", serif; /*heading font*/
+  margin-bottom: 0.5rem; /*space below title*/
 }
 
 .card p {
-  color: var(--purple);
-  margin-bottom: 1.25rem;
+  color: var(--purple); /*brand color*/
+  margin-bottom: 1.25rem; /*space before link*/
 }
 
 .card a {
-  color: var(--green);
-  text-decoration: none;
-  font-weight: 500;
-  margin-top: auto;
+  color: var(--green); /*accent color*/
+  text-decoration: none; /*removes underline*/
+  font-weight: 500; /*medium emphasis*/
+  margin-top: auto; /*pushes link to bottom of card*/
 }
 
 .card a:hover {
-  text-decoration: underline;
+  text-decoration: underline; /*link hover effect*/
 }
 
 /* --------------------
-   Footer
+   Footer Layout
 --------------------- */
 .site-footer {
-  background-color: var(--purple);
-  border-top: 1px solid;
-  text-align: center;
-  padding: 1.25rem;
-  color: var(--white);
+  background-color: var(--purple); /*brand background*/
+  color: var(--white); /* readable text */
+  padding: 2.5rem 1.5rem 1.5rem;/* spacing inside footer*/
+}
+
+/* grid layout */
+.footer-container {
+  display: grid; /*enables grid system*/
+  grid-template-columns: repeat(4, 1fr); /* creates 4 equal columns */
+  gap: 2rem; /*space between columns*/
+  max-width: 1200px; /*limits width*/
+  margin: 0 auto; /*centers container*/
+}
+
+/* each column */
+.footer-col h2,
+.footer-col h3 {
+  font-family: "Lora", serif; /*consistent heading font*/
+  margin-bottom: 0.75rem; /*spacing below headings*/
+}
+
+.footer-col p {
+  font-size: 0.9rem; /*slightly smaller text*/
+}
+
+/* --------------------
+   Footer Navigation
+--------------------- */
+.footer-nav {
+  display: flex;
+  flex-direction: column; /*stacks links vertically*/
+  gap: 0.5rem; /*spacing between links*/
+}
+
+.footer-nav a {
+  text-decoration: none; /*removes underline*/
+  color: var(--white); /*matches footer text*/
+  font-size: 0.9rem; 
+}
+
+.footer-nav a:hover {
+  color: var(--green); /*highlight color*/
+}
+
+/* --------------------
+   Form (reuse your style)
+--------------------- */
+.form {
+  display: flex; /*aligns input + button horizontally*/
+  gap: 8px; /*spacing between elements*/
+  margin-top: 0.5rem; 
+}
+/*Email input field*/
+.form input {
+  padding: 8px; /*internal spacing*/
+  border: none;
+  border-radius: 4px; /*rounded corners*/
+}
+/*Subscribe button*/
+.form button {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 4px;
+  background: #fff; /*contrasts footer background*/
+  color: var(--purple); /*brand color text*/
+  cursor: pointer; /*pointer on hover*/
+}
+
+/* --------------------
+   Social Icons
+--------------------- */
+.socials {
+  display: flex;
+  gap: 10px; /*spacing between icons*/
+  margin-top: 0.75rem;
+}
+
+.socials a {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%; /*Circular items*/
+  border: 1px solid #fff; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* --------------------
+   Bottom Bar
+--------------------- */
+.footer-bottom {
+  text-align: center; /*centers texts*/
+  margin-top: 2rem; /*space above*/
+  font-size: 0.85rem; /*smaller text*/
+  opacity: 0.85; /*slightly muted*/
+}
+
+/* --------------------
+   Responsive
+--------------------- */
+@media (max-width: 900px) {
+  .footer-container {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns */
+  }
+}
+
+@media (max-width: 500px) {
+  .footer-container {
+    grid-template-columns: 1fr; /* stack */
+  }
+
+  .form {
+    flex-direction: column;
+  }
 }
 
 /* --------------------
