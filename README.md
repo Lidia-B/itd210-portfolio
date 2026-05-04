@@ -1,10 +1,15 @@
 # itd210-portfolio - Lidia Bernal
 
 ## About This Project
-Welcome to La Bonita Donuts, a bakery where sweet dreams come true. We are all about cute, delicious treats. From classic favorites to seasonal creations, our donuts are crafted with lots of love and care.
+Welcome to La Bonita Donuts, a fictional bakery website designed to showcase a modern ,responsive front-end experience. The site features a
+playful brand identity with interactive elements, accessibility improvements, and a fully functional contact system.
 
 ## Milestones
-Milestone 3 - Contact Page & interactivity
+Milestone 3 & 5 - Contact Page & interactivity
+-Built fully responsive contact page layout
+-Integrated Formspree form submission system
+-added validation and required fields
+-implemented mobile Navigation toggle
 
 Milestone 4- Media/Reviews Page 
 -converted the Reviews page into a media-focused interactive page
@@ -30,6 +35,15 @@ Milestone 4- Media/Reviews Page
 - Tab switching(JavaScript)
 - Play/Pause video toggle
 - Transcript show/hide button
+
+## Contact Form (Formspree)
+
+Fully connected to Formspree endpoint:
+
+https://formspree.io/f/mvzlkdlv 
+-Required fields with validation
+-Accessible error and success messages
+-No backend required (serverless form handling)
 
 ## Notes
 All images are AI-generated for educational purposes.

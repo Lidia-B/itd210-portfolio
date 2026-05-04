@@ -165,55 +165,52 @@ if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
         el.style.transition = "none";
     });
 }
-document.addEventListener("DOMContentLoaded", () => {
+// AI ASSISTANCE:
+//Tool: ChatGPT
+//Date: 5/4/2026
+//Where: CAROUSEL 
+//Fixed a broken syntax error
+
 //================================
 //CAROUSEL FUNCTIONALITY
 //===============================
+document.addEventListener("DOMContentLoaded", () => {
+
 const track = document.getElementById("carouselTrack");
 const nextBtn = document.getElementById("nextBtn");
 const prevBtn = document.getElementById("prevBtn");
 
-if (!track || !nextBtn || !prevBtn) {
-  console.warn("Carousel elements missing:", {
-    track,
-    nextBtn,
-    prevBtn
-  });
+const slides = document.querySelectorAll("#carouselTrack .slide");
+
+// STOP HERE if elements don't exist
+if (!track || !nextBtn || !prevBtn || slides.length === 0) {
+  console.warn("Carousel not loaded on this page");
+  return;
 }
 
-const slides = document.querySelectorAll("#carouselTrack .slide");
- 
-if (slides.length === 0){
-    console.warn("No slides found inside carouselTrack");
-}
 let currentIndex = 0;
 
-//Move carousel
-function updateCarousel(){
-    track.style.transform = `translateX(-${currentIndex * 100}%)`;
+// Move carousel
+function updateCarousel() {
+  track.style.transform = `translateX(-${currentIndex * 100}%)`;
 }
- // Next Button
- // Moves carousel forward
- nextBtn.addEventListener("click", () => {
-    currentIndex = (currentIndex + 1) % slides.length;
-    updateCarousel();
- });
 
- //Previous Button
- //moves carousel backwards
-  prevBtn.addEventListener("click", () => {
-    currentIndex = (currentIndex - 1 + slides.length) % slides.length;
-    updateCarousel();
- });
+// Next button
+nextBtn.addEventListener("click", () => {
+  currentIndex = (currentIndex + 1) % slides.length;
+  updateCarousel();
+});
 
- //===========================
- //KEYBOARD ACCESSIBILITY
- //allows navigation using keyboard
- //===========================
- if (track && nextBtn && prevBtn){
- document.addEventListener("keydown", (e) => {
-    if (e.key === "ArrowRight") nextBtn.click();
-    if (e.key === "ArrowLeft") prevBtn.click();
- });
- }
+// Prev button
+prevBtn.addEventListener("click", () => {
+  currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+  updateCarousel();
+});
+
+// Keyboard support
+document.addEventListener("keydown", (e) => {
+  if (e.key === "ArrowRight") nextBtn.click();
+  if (e.key === "ArrowLeft") prevBtn.click();
+});
+
 });
