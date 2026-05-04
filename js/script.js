@@ -15,18 +15,78 @@ toggleBtn.addEventListener('click', () => {
     mobileNav.classList.toggle('open');
 });
 }
-// Confirmation Message
+// Contact page:
+// FORM VALIDATION
+//prevents submission if invalid
 
-/*Prevents page reload and shows a confirmation */
+const contactForm = document.getElementById("contactForm");
 
-const contactForm = document.querySelector('.contact-form');
+if (contactForm) {
+    contactForm.addEventListener("submit", (e) => {
+        let isValid = true;
 
-if(contactForm){
-    contactForm.addEventListener('submit', function(e){
-        e.preventDefault();
-    alert("Thanks! We'll get back to you soon.");
-});
+        //Clear old errors
+        document.querySelectorAll(".error-message").forEach(el => {
+            el.textContent = "";
+        });
+
+        const firstName = document.getElementById("firstname");
+        const lastName = document.getElementById("lastname");
+        const email = document.getElementById("email");
+        const message = document.getElementById("message");
+
+        //First name
+
+        if (firstName.value.trim() === "") {
+            showError(firstName, "First name is required");
+            isValid = false;
+        }
+        // Last Name
+        if (lastName.value.trim() === "") {
+            showError(lastName, "Last name is required");
+            isValid = false;
+        }
+        // Email
+        if(!email.value.includes("@")) {
+            showError(email, "Enter a valid email");
+            isValid = false;
+        }
+        // Message
+        if (message.value.trim().length < 10) {
+            showError(message, "Message must be at least 10 characters");
+            isValid = false;
+        }
+        //STOP
+        if (!isValid) {
+            e.preventDefault();
+        }
+    });
 }
+    function showError(input, message) {
+        const errorSpan = input.parentElement.querySelector(".error-message");
+        if (errorSpan) {
+            errorSpan.textContent = message;
+        }
+    }
+        // Character counter interaction
+        const messageField = document.getElementById("message");
+        const charCount =document.getElementById("charCount");
+
+        if (messageField && charCount) {
+            messageField.addEventListener("input", () => {
+                charCount.textContent = `${messageField.value.length} / 200 characters`;
+            });
+        }
+
+//contact page:
+//FAQ accordion interaction
+
+document.querySelectorAll(".faq-question").forEach(btn =>{
+    btn.addEventListener("click", () => {
+        btn.nextElementSibling.classList.toggle("open");
+    });
+});
+
 
 //============================
 // TAB SWITCHER

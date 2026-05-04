@@ -717,3 +717,94 @@ ACCESSIBILITY IMPROVEMENTS
 button{
   font-family: inherit;/*makes sure buttons inherit font styles*/
 }
+
+/*================================
+FORM ERROR MESSAGES
+Shows validation feedback clearly
+================================*/
+.error-message {
+  color: #b00020; /*red error color for visibility*/
+  font-size: 0.85rem; /*slightly smaller text*/
+  display: block; /*forces message onto its own line*/
+  margin-top: 4px; /*space above error text*/
+}
+
+/*================================
+FORMSPREE SUCCESS MESSAGE
+Displays confirmation after submit
+===================================*/
+[data-fs-success] {
+  background: #e6f9ec; /*light green success background*/
+  border: 2px solid #4caf50; /*green border for emphasis*/
+  padding: 1rem; /*internal spacing*/
+  border-radius: 10px; /*rounded corners*/
+  margin-bottom: 1rem; /*spacing below message*/
+  color: #2e7d32; /*dark green text for contrast*/
+}
+
+/*Character counter under message*/
+#charCount {
+  font-size: 0.8rem; /*small helper text*/
+  color: #555; /*neutral grey*/
+  display: block; /*ensures it sits below textarea*/
+  margin-bottom: 10px; /*spacing below counter*/
+}
+/*Turns red near limit*/
+#charCount.warning {
+  color: #b00020; /* limit warning: turns red*/
+}
+
+/*=================================
+FORM INPUT STYLING
+Improves usability + accessibility
+====================================*/
+.contact-form input,
+.contact-form textarea,
+.contact-form select {
+  width: 100%; /*full width input*/
+  padding: 10px; /*comfortable click/tap area*/
+  margin-top: 6px; /*space above inputs*/
+  margin-bottom: 12px; /*space below input*/
+  border-radius: 6px; /*softened corners*/
+  border: 1px solid #ccc; /*neutral border*/
+  font-family: inherit; /*matches site font style*/
+}
+/*Focus State (accessibility)*/
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: var(--purple);/*highlights active field*/
+  outline: none; /*removes default browser outline*/
+}
+
+/*==================================
+FAQ ACCORDION
+interactive expand/collapse 
+===================================*/
+.faq {
+  margin-top: 3rem; /*spacing above FAQ section*/
+}
+.faq-question {
+  width: 100%; /*full clickable width*/
+  text-align: left; /*aligns text left*/
+  padding: 12px; /*comfortable click area*/
+  background: var(--light-grey); /*neutral background*/
+  border: none; /*removes default border*/
+  cursor: pointer; /*indicates interactivity*/
+  margin-bottom: 5px; /*spacing between questions*/
+}
+
+/*Hover interaction*/
+.faq-question:hover {
+  background: var(--green);/*highlights on hover*/
+  color: var(--white); /*ensures readability*/
+}
+/*Hidden answer by default*/
+.faq-answer {
+  display: none; /*keeps content hidden initially*/
+  padding: 10px; /*spacing inside answer box*/
+  background: #fff; /*clean readable background*/
+}
+/*Visible when clicked*/
+.faq-answer.open {
+  display: block;/*reveals content*/
+}

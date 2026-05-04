@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="js/script.js"></script>
+
     <title>Contact | La Bonita Donuts</title>
     <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Lora:wght@600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
@@ -60,29 +60,51 @@
       Send us a message and we'll get back to you soon!
     </p>
 
-    <!-- Form includes labels for accessibility and required fields.-->
-     <form class="contact-form">
+    <!-- Contact form with Formspree integration includes labels for accessibility and required fields.-->
+     <div data-fs-success id="formSuccess" aria-live="polite"></div>
+     <div data-fs-error id="formError" aria-live="polite"></div>
+
+     <form id="contactForm" class="contact-form">
+
+      <!--Aria-live region announces errors to screen readers-->
+      <div id="formErrors" aria-live="polite"></div>
 
       <div class="form-row">
+        <!--FIRST & LAST NAME-->
         <div>
           <label for="firstname">First Name :</label>
-          <input type="text" id="firstname" name="firstname" required>
+          <input type="text" id="firstname" name="firstname" required 
+          placeholder="Enter your first name" data-fs-field
+          aria-describedby="firstnameHelp">
+
+          <small>Required field</small>
+          <span class="error-message" data-fs-error="firstname"></span>
         </div>
 
         <div>
            <label for="lastname">Last Name :</label>
-          <input type="text" id="lastname" name="lastname" required>
+          <input type="text" id="lastname" name="lastname" required
+          placeholder="Enter your last name" data-fs-field>
+
+          <small>Required field</small>
+          <span class="error-message" data-fs-error="lastname"></span>
         </div>
       </div>
        
+      <!--EMAIL-->
       <div>
       <label for="email">Email :</label>
-      <input type="email" id="email" name="email" required>
-      </div>
+      <input type="email" id="email" name="email" required
+      placeholder="example@email.com" data-fs-field>
 
+      <small>We'll never share your email</small>
+      <span class="error-message" data-fs-error="email"></span>
+      </div>
+      <!--ORDER-->
       <h4>Place your order here:</h4>
+
       <!-- Bakery Order Field-->
-       <select id="flavor"> 
+       <select id="flavor" name="flavor"> 
         <option value="">Choose Your Donut</option>
 
         <option value="chocolate">Chocolate Ferreo Glaze</option>
@@ -93,18 +115,26 @@
        <label for="quantity">Quantity :</label>
        <input type="number" id="quantity" name="quantity" min="1" max="24" value="1">
       
+       <!--MESSAGE-->
       <div>
       <label for="message">Message : </label>
-      <textarea id="message" name="message" rows="4" required></textarea>
+      <textarea id="message" name="message" rows="4" required
+      minlength="10" placeholder="Type at least 10 Characters" data-fs-field></textarea>
+
+      <!--CHARACTER COUNTER-->
+      <small id="charCount">0 / 200 characters</small>
+      <span class="error-message" data-fs-error="message"></span>
       </div>
 
       <!--CHECKBOX = interactive element-->
-      <label for="subscribe" class="checkbox">
+      <label class="checkbox">
         <input type="checkbox" id="subscribe" name="subscribe">
         Subscribe to our donut deals 🍩
       </label>
 
-      <button type="submit" class="cta-button">Submit</button>
+      <!--SUBMIT BUTTON-->
+      <button type="submit" class="cta-button" data-fs-submit-btn>Submit</button>
+
      </form>
      
 
@@ -115,6 +145,22 @@
    <p><strong>
     📧 Email: </strong>Yummy@labonitadonuts.com</p>
   </div>
+   </section>
+
+   <section class="faq">
+    <h2>FAQs</h2>
+    <button class="faq-question">Are your donuts made fresh daily?</button>
+    <div class="faq-answer">Yes, we hand-make our donuts every day.</div>
+
+    <button class="faq-question">Do you take custom orders?</button>
+    <div class="faq-answer">Yes! Please contact us 24 hours ahead.</div>
+
+    <button class="faq-question">Do you offer delivery?</button>
+    <div class="faq-answer">Currently pickup only</div>
+
+    <button class="faq-question">Do your donuts contain nuts?</button>
+    <div class="faq-answer">While we have nut-free options, our kitchen handles nuts. Please advise
+      our staff of severe allergies.</div>    
    </section>
 
 
@@ -188,6 +234,24 @@
      <div class="footer-bottom">
     <p>&copy; 2026 Lidia Bernal | La Bonita Donuts </p>
 </div>
-</footer>
+</footer>  
+
+  <!--JAVASCRIPT-->
+  <script src="js/script.js"></script>
+
+  <!-- FORMSPREE SCRIPT-->
+   <script>
+    window.formspree = window.formspree || function () {
+      (formspree.q = formspree.q || []).push(arguments);
+    };
+
+    formspree('initForm', {
+      formElement: '#contactForm',
+      formId: 'mvzlkdlv'
+    });
+   </script>
+
+   <script src="https://unpkg.com/@formspree/ajax@1" defer></script>
+
 </body>
 </html>
