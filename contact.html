@@ -77,7 +77,7 @@
           placeholder="Enter your first name" data-fs-field
           aria-describedby="firstnameHelp">
 
-          <small>Required field</small>
+          <small id="firstnameHelp">Required field</small>
           <span class="error-message" data-fs-error="firstname"></span>
         </div>
 
@@ -127,26 +127,18 @@
       </div>
 
       <!--CHECKBOX = interactive element-->
+      <div class="checkbox-group">
       <label class="checkbox">
         <input type="checkbox" id="subscribe" name="subscribe">
         Subscribe to our donut deals 🍩
       </label>
+    </div>
 
       <!--SUBMIT BUTTON-->
       <button type="submit" class="cta-button" data-fs-submit-btn>Submit</button>
 
      </form>
      
-
-     <!-- Contact Info block-->
-   <div class="contact-info-box">
-   <p><strong>
-    📞 Phone: </strong>(555)123-Donut</p>
-   <p><strong>
-    📧 Email: </strong>Yummy@labonitadonuts.com</p>
-  </div>
-   </section>
-
    <section class="faq">
     <h2>❓ FAQs</h2>
     <button class="faq-question">Are your donuts made fresh daily?</button>
@@ -162,6 +154,17 @@
     <div class="faq-answer">While we have nut-free options, our kitchen handles nuts. Please advise
       our staff of severe allergies.</div>    
    </section>
+
+     <!-- Contact Info block-->
+   <div class="contact-info-box">
+   <p><strong>
+    📞 Phone: </strong>(555)123-Donut</p>
+   <p><strong>
+    📧 Email: </strong>Yummy@labonitadonuts.com</p>
+  </div>
+   </section>
+
+
 
 
    <!--RIGHT SIDE: MAP/IMAGE-->
@@ -239,7 +242,6 @@
   <!--JAVASCRIPT-->
   <script src="js/script.js"></script>
 
-  <!-- FORMSPREE SCRIPT-->
    <script>
     window.formspree = window.formspree || function () {
       (formspree.q = formspree.q || []).push(arguments);

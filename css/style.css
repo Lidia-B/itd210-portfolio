@@ -781,6 +781,7 @@ FAQ ACCORDION
 interactive expand/collapse 
 ===================================*/
 .faq {
+  background: transparent;
   margin-top: 3rem; /*spacing above FAQ section*/
 }
 .faq-question {
@@ -802,9 +803,19 @@ interactive expand/collapse
 .faq-answer {
   display: none; /*keeps content hidden initially*/
   padding: 10px; /*spacing inside answer box*/
-  background: #fff; /*clean readable background*/
+  background: var(--dark-grey); /*clean readable background*/
 }
 /*Visible when clicked*/
 .faq-answer.open {
   display: block;/*reveals content*/
+}
+/*CHECKBOX ALIGNMENT*/
+.checkbox-group{
+  margin-top: 10px; /*space above checkbox section*/
+}
+.checkbox{
+  display: flex; /*puts box + text in a row*/
+  align-items: center; /*vertically centers them*/
+  font-size: 0.95rem;/*slightly cleaner sizing*/
+  cursor: pointer; /*makes label clickable*/
 }
