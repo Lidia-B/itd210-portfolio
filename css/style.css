@@ -257,8 +257,11 @@ header{
   display: grid;
   grid-template-columns: 1fr;
   gap: 2rem;
+
   max-width: 1200px;
   margin: 0 auto;
+
+  padding: 0 1.5rem;
   align-items: stretch;
 }
 
@@ -508,7 +511,7 @@ Adds a two-column responsive design
   overflow: hidden;
 }
 .contact-left h1{
-  font-size: 2.5rem;
+  font-size: clamp(2rem, 5vw, 2.5rem);
   margin-bottom: 1rem;
 }
 .contact-left p{
@@ -776,6 +779,14 @@ Improves usability + accessibility
   outline: none; /*removes default browser outline*/
 }
 
+.contact-form label,
+.contact-form input,
+.contact-form textarea,
+.contact-form select,
+.contact-form small {
+  font-size: 1rem;
+}
+
 /*==================================
 FAQ ACCORDION
 interactive expand/collapse 
@@ -818,4 +829,20 @@ interactive expand/collapse
   align-items: center; /*vertically centers them*/
   font-size: 0.95rem;/*slightly cleaner sizing*/
   cursor: pointer; /*makes label clickable*/
+}
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+@media (min-width: 768px) {
+  .form-row {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+.contact-form > div,
+.contact-form h4,
+.checkbox-group {
+  margin-bottom: 1rem;
 }
