@@ -19,7 +19,11 @@ ensures consistent layout calculations
   --dark-grey: #333; /* Main text color */
   --light-grey: #f7f7f7; /* Light background divider*/
   --white: #ffffff; /* Default background color */
-}
+} 
+/*=====================================
+3) BASE STYLE (MOBILE-FIRST) 
+these styles apply to smaller screens
+========================================*/
 body {
     font-family:"Roboto", sans-serif; /*Readable font*/
     font-size: 16px; /* sized for readability*/
@@ -29,10 +33,14 @@ body {
 
     overflow-x: hidden; /*Prevents horizontal scrolling*/
 }
-/*==============================
+
+html{
+  scroll-behavior: smooth; /*adds a smooth scroll*/
+}
+/*---------------------
 Global Spacing
 creates consistent visual rhythm
-================================*/
+------------------------*/
 section{
   margin-bottom: 4rem; /*space between sections*/
 }
@@ -40,11 +48,33 @@ h1,h2,h3{
   line-height: 1.2; /*tighter heading spacing*/
 }
 p {
+  font-size: 1rem;/* slightly bigger letters*/
   max-width: 65ch; /*improves readability*/
 }
-
-/* ACCESSIBILITY FOCUS STYLES
-ensures keyboard users can clearly see which element is selected.*/
+/*-------------------------------
+LINK DEFAULTS
+removes default link colors and uses 
+site's text color instead
+---------------------------------*/
+a {
+    color: inherit;/*removes default link colors and uses site's text color instead*/
+}
+/*-------------------------------
+MEDIA DEFAULTS:
+ensures images and videos scale properly
+and do not overflow container
+---------------------------------*/
+img,
+video {
+    max-width: 100%; /*Prevents media from overflowing container width*/
+    height: auto; /* maintains aspect ratio*/
+    display: block; /*removes inline spacing*/
+}
+/*----------------------------
+ACCESSIBILITY FOCUS STYLES
+ensures keyboard users can clearly
+see which element is selected.
+-----------------------------*/
 a:focus,
 button:focus,
 input:focus,
@@ -53,20 +83,23 @@ textarea:focus{
   outline-offset: 3px;
 }
 
-/* MEDIA DEFAULTS*/
-img,
-video {
-    max-width: 100%; /*Prevents media from overflowing container width*/
-    height: auto; /* maintains aspect ratio*/
-    display: block; /*removes inline spacing*/
-}
-/*LINKS*/
-a {
-    color: inherit;/*removes default link colors and uses site's text color instead*/
-}
+/*======================================
+4) LAYOUT: Structure + positioning
+========================================*/
 main{
     padding-top: 64px; /*adds space at the top so content is not hidden behind header*/
 }
+/*CONTENT CONTAINER*/
+.container{
+    max-width: 1100px; /*prevents content from stretching too wide*/
+    margin: 0 auto; /*centers content*/
+    padding: 0 1.5rem;/*adds side spacing on small screens*/
+}
+/*-----------------------
+HEADER LAYOUT (FLEXBOX)
+FlexBox uses to align the logo and 
+navigation horizontally and space them
+------------------------*/
 header{
     display: flex; /*enables flex layout*/
     justify-content: space-between; /*pushes items to opposite sides*/
@@ -76,13 +109,24 @@ header{
     border-bottom: 2px solid var(--light-grey); /* adds a subtle separation line*/
 
 }
+/*--------------------------
+NAVIGATION LAYOUT
+uses FlexBox to display navigation links
+in a row with equal spacing
+---------------------------*/
 .main-nav{
+  list-style: none;
   display: flex; /*lays out links in row*/
   gap: 1.5rem; /*spacing between navigation links*/
 }
 .desktop-nav{
   margin-left: auto; /*pushes nav to the right side*/
 }
+
+/*-------------------------
+MOBILE NAVIGATION DEFAULT
+activated when mobile layout is activated
+-------------------------*/
 .mobile-nav{
   display: none; /*hides mobile menu */
   flex-direction: column;
@@ -103,7 +147,112 @@ header{
 .mobile-toggle {
   display: none;
 }
+/* --------------------
+   Hero Section
+   large feature image with centered text
+-used to highlight the main message
+--------------------- */
+.hero {
+  position: relative; /*allows overlay positioning*/
+}
+/*Hero background image*/
+.hero-media img {
+  width: 100%; /*uses full width of container*/
+  height: 60vh; /*uses 60% of screen height*/
+  object-fit: cover; /*prevents stretching*/
+  display: block;
+}
 
+/*----------------------------
+HERO TEXT OVERLAY
+-Flexbox centers text vertically and horizontally
+-Absolute positioning places it over image
+-------------------------------*/
+.hero-inner {
+  position: absolute;/*overlay over image*/
+  inset: 0;/*stretches overlay to cover parent*/
+  z-index: 2;/* makes sure overlay is on top of image*/
+
+  display: flex; /*enables flex layout for text*/ 
+  flex-direction: column; /*stacks text vertically*/
+
+  justify-content: center;/*centers texts vertically*/
+  align-items: center; /*centers text horizontally*/
+
+  text-align: center; /*centers text lines*/
+
+  padding: 1.5rem; /*spacing inside overlay*/
+
+  
+  color: var(--dark-grey);/* dark text color */
+
+  animation: fadeUp 0.8s ease;/*applies animation on load*/
+}
+/* Optional but HIGHLY recommended for readability */
+.hero-inner::before {
+  content: "";/*empty pseudo-element*/
+  position: absolute; /*overlays hero-inner*/
+  inset: 0; /*covers entire hero-inner*/
+
+  background: rgba(254, 250, 250, 0.7); /*semi-transparent white overlay*/
+
+  z-index: 0; /*places overlay behind text*/
+}
+.hero-inner > * {
+  position: relative;
+  z-index: 1;
+}
+/*CARD GRID*/
+.card-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+
+  max-width: 1200px;
+  margin: 0 auto;
+
+  padding: 0 1.5rem;
+  align-items: stretch;
+}
+/*FOOTER GRID*/
+.footer-container {
+  display: grid; /*enables grid system*/
+  grid-template-columns: repeat(4, 1fr); /* creates 4 equal columns */
+  gap: 2rem; /*space between columns*/
+  max-width: 1200px; /*limits width*/
+  margin: 0 auto; /*centers container*/
+}
+/*ABOUT LAYOUT*/
+.about-section{
+    display: grid;/*enables CSS Grid layout*/
+    grid-template-columns: 1fr; /*mobile= stacked*/
+    gap: 3rem;/* spacing between image and text*/
+    padding: 2rem; /*inside spacing around section*/
+    align-items: center;/*centers items*/
+    margin: 4rem auto; /* vertical spacing and centers section horizontally*/
+}
+/*CONTACT PAGE LAYOUT*/
+.contact-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  min-height: 100vh;
+  padding: 4rem 1.5rem;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+/*FORM ROW*/
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+/*=========================
+5) COMPONENTS
+reusable UI pieces
+===========================*/
+/*BRAND*/
 .brand { 
   display: flex;
   align-items: center; /*vertically aligns icon and texts*/
@@ -111,18 +260,17 @@ header{
   font-family: "Lora", serif; /*heading font*/ 
   font-size: 1.5rem; /*slight bigger text for brand*/
 }
+/*Logo Image Control*/
 .brand-icon {
   width: 50px; /*logo width*/
   height: 50px; /*logo height*/
   object-fit: contain; /*prevents image distortion*/
 }
 
-.main-nav {
-  list-style: none;
-  display: flex;
-  gap: 1.5rem;
-}
-
+/*------------------------
+NAVIGATION LINK STYLING
+styles links and adds hover effects
+----------------------------*/
 .main-nav a {
   text-decoration: none;/*removes underline*/
   color: var(--white);/*default text color for links*/
@@ -138,94 +286,46 @@ header{
   border-bottom-color: var(--green);
 }
 
-/* --------------------
-   Hero Section
---------------------- */
-.hero {
-  position: relative; /*allows overlay positioning*/
-}
-
-.hero-media img {
-  width: 100%; /*uses full width of container*/
-  height: 60vh; /*uses 60% of screen height*/
-  object-fit: cover; /*prevents stretching*/
-  display: block;
-}
-
-.hero-inner {
-  position: absolute;
-  inset: 0;
-  z-index: 2;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  text-align: center;
-  padding: 1.5rem;
-
-  
-  color: #111;/* dark text */
-
-  animation: fadeUp 0.8s ease;/*applies animation on load*/
-}
-/*keyframe animation definition*/
-@keyframes fadeUp{
-  from{
-    opacity: 0;/*start invisible*/
-    transform: translateY(20px);/*start slightly below*/
-  }
-  to{
-    opacity: 1;/*fade in*/
-    transform: translateY(0); /*move into position*/
-  }
-}
-
-/* Optional but HIGHLY recommended for readability */
-.hero-inner::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(255, 255, 255, 0.7);
-  z-index: -1;
-}
-
-/* Text styling */
+/* Hero Styling */
 .hero-kicker {
-  font-size: 4rem;
-  font-weight: 700;
-  letter-spacing: 1px;
+  font-size: 2.5rem; /*heading size*/
+  font-weight: 700; /*bold font*/
+  letter-spacing: 1px;  /*spacing between letters*/
   margin-bottom: 0.5rem;
 }
 
 .hero-inner h1 {
-  font-family: "Lora", serif;
-  font-size: 2.5rem;
+  font-family: "Lora", serif; /*heading font*/
+  font-size: 2.5rem; /*main-heading size*/
   margin-bottom: 0.75rem;
 }
 
 .hero-inner p {
-  max-width: 520px;
+  max-width: 520px; /*limits paragraph width for readability*/
   margin-bottom: 1.5rem;
 }
-.button-center{
-  text-align: center; 
-  margin-top: 2rem;
-}
- /* MAIN CTA BUTTON */
+/*CTA BUTTON STYLING*/
 .cta-button {
-  background-color: var(--purple); /*primary button color*/
+  background-color: var(--purple);/*primary button color*/
   color: var(--white); /*text color*/
 
   padding: 0.75rem 1.75rem; /*vertical and horizontal padding*/
-  border-radius: 999px;/*fully rounded shape*/
+  border-radius: 999px; /*fully rounded shape*/
   text-decoration: none; /*removes underline*/
   font-weight: 500; /*medium font weight*/
-  display: inline-block; /*makes the padding work correctly*/
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15); /*subtle shadow*/
   transition: transform 0.2s ease, box-shadow 0.2s ease; /*smooth hover*/
+  display: inline-block;/*allows margin to work*/
+  margin-top: 1.5rem;/* adds spacing between heading & CTA button*/
 }
+.about-cta{
+    display: flex; /*enables flex*/
+    flex-direction: column; /*stacks vertically*/
+    text-align: center;/*centers texts and button*/
+    padding: 2rem;/*internal spacing*/
+    background: var(--light-grey); /*section background color*/
+}
+
 /*Hover animation*/
 .cta-button:hover {
     background-color: var(--green); /*changes hover color*/
@@ -253,18 +353,6 @@ header{
   text-align: center;
 }
 
-.card-container {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 2rem;
-
-  max-width: 1200px;
-  margin: 0 auto;
-
-  padding: 0 1.5rem;
-  align-items: stretch;
-}
-
 .card {
   background-color: var(--white); /*card background*/
   border-radius: 12px; /*rounded corners*/
@@ -274,6 +362,7 @@ header{
   flex-direction: column; /*stacks content vertically*/
   height: 100%; /*ensures equal height cards*/
   transition: transform 0.25s ease, box-shadow 0.25s ease; /*smooth animation*/
+  overflow: hidden;/*avoid image spilling outside rounded corners*/
 }
 /*Hover Interaction*/
 .card:hover {
@@ -315,7 +404,6 @@ header{
 .card a:hover {
   text-decoration: underline; /*link hover effect*/
 }
-
 /* --------------------
    Footer Layout
 --------------------- */
@@ -323,15 +411,6 @@ header{
   background-color: var(--purple); /*brand background*/
   color: var(--white); /* readable text */
   padding: 2.5rem 1.5rem 1.5rem;/* spacing inside footer*/
-}
-
-/* grid layout */
-.footer-container {
-  display: grid; /*enables grid system*/
-  grid-template-columns: repeat(4, 1fr); /* creates 4 equal columns */
-  gap: 2rem; /*space between columns*/
-  max-width: 1200px; /*limits width*/
-  margin: 0 auto; /*centers container*/
 }
 
 /* each column */
@@ -344,29 +423,9 @@ header{
 .footer-col p {
   font-size: 0.9rem; /*slightly smaller text*/
 }
-
-/* --------------------
-   Footer Navigation
---------------------- */
-.footer-nav {
-  display: flex;
-  flex-direction: column; /*stacks links vertically*/
-  gap: 0.5rem; /*spacing between links*/
-}
-
-.footer-nav a {
-  text-decoration: none; /*removes underline*/
-  color: var(--white); /*matches footer text*/
-  font-size: 0.9rem; 
-}
-
-.footer-nav a:hover {
-  color: var(--green); /*highlight color*/
-}
-
-/* --------------------
-   Form (reuse your style)
---------------------- */
+/*-------------
+ FORM
+---------------*/
 .form {
   display: flex; /*aligns input + button horizontally*/
   gap: 8px; /*spacing between elements*/
@@ -406,102 +465,153 @@ header{
   align-items: center;
   justify-content: center;
 }
+/*---------------------
+CAROUSEL CONTAINER
+-----------------------*/
+.carousel{
+  background: linear-gradient(135deg, #fff7fb, #f7f7ff);/*light color for dimension*/
+  padding: 2rem 1rem;/*spacing inside container*/
+  border-radius: 20px;/*rounded border*/
+  position: relative;/*allows positioning of navigation buttons inside*/
+  overflow: hidden;/*hides non-active slides*/
+  max-width: 500px; /*keeps carousel compact and readable*/
+  margin: 2rem auto;/*centers the carousel horizontally on the page*/
+}
+/*----------------------
+CAROUSEL TRACK
+holds all slides in a row 
+-----------------------*/
+.carousel-track{
+  display: flex;/*places slides side-by-side horizontally*/
+  transition: transform 0.4s ease;/*smooth animation when sliding*/
+}
+/*-----------------------
+INDIVIDUAL SLIDE
+each review takes full width of carousel
+--------------------------*/
+.slide{
+  flex: 0 0 100%; /*ensures each slide takes 100% width*/
 
-/* --------------------
-   Bottom Bar
---------------------- */
-.footer-bottom {
-  text-align: center; /*centers texts*/
-  margin-top: 2rem; /*space above*/
-  font-size: 0.85rem; /*smaller text*/
-  opacity: 0.85; /*slightly muted*/
+  display: flex;/*centers review content inside slide*/
+  align-items: center;/*vertical centering*/
+  justify-content: center;/*horizontally centering*/
+}
+/*--------------------------
+CAROUSEL BUTTONS
+navigation arrows for user interaction
+---------------------------*/
+.carousel-btn{
+  position: absolute;/*positions buttons on top of carousel*/
+  top: 50%; /*vertically centers button*/
+  transform: translateY(-50%);/*adjusts for perfect centering*/
+  background: var(--purple);/*brand color*/
+  color: var(--white);/*ensures contrast for accessibility*/
+  border: none;/*removes default button styling*/
+  padding: 0.5rem 0.75rem; /*increases clickable area*/
+  cursor: pointer;/*indicates interactivity*/
+  border-radius: 50%;/*circular button design*/
+}
+/*Left button*/
+.carousel-btn.prev{
+  left: 10px;/*places button slightly inside left edge*/
+}
+/*Right button*/
+.carousel-btn.next{
+  right: 10px;/*places button slightly inside right edge*/
+}
+/*Hover effect*/
+.carousel-btn:hover{
+  background: var(--green);/*changes color to show interactivity*/
 }
 
-/* --------------------
-   Responsive
---------------------- */
-@media (max-width: 900px) {
-  .footer-container {
-    grid-template-columns: repeat(2, 1fr); /* 2 columns */
-  }
+/*--------------------------
+FAQ ACCORDION
+interactive expand/collapse 
+-----------------------------*/
+.faq {
+  background: transparent;
+  margin-top: 3rem; /*spacing above FAQ section*/
+}
+.faq-question {
+  width: 100%; /*full clickable width*/
+  text-align: left; /*aligns text left*/
+  padding: 12px; /*comfortable click area*/
+  background: var(--light-grey); /*neutral background*/
+  border: none; /*removes default border*/
+  cursor: pointer; /*indicates interactivity*/
+  margin-bottom: 5px; /*spacing between questions*/
 }
 
-@media (max-width: 500px) {
-  .footer-container {
-    grid-template-columns: 1fr; /* stack */
-  }
+/*Hover interaction*/
+.faq-question:hover {
+  background: var(--green);/*highlights on hover*/
+  color: var(--white); /*ensures readability*/
+}
+/*Hidden answer by default*/
+.faq-answer {
+  display: none; /*keeps content hidden initially*/
+  padding: 10px; /*spacing inside answer box*/
+  background: var(--dark-grey); /*clean readable background*/
+  color: var(--white);
+}
+/*Visible when clicked*/
+.faq-answer.open {
+  display: block;/*reveals content*/
+}
+/*CHECKBOX ALIGNMENT*/
+.checkbox-group{
+  margin-top: 10px; /*space above checkbox section*/
+}
+.checkbox{
+  display: flex; /*puts box + text in a row*/
+  align-items: center; /*vertically centers them*/
+  font-size: 0.95rem;/*slightly cleaner sizing*/
+  cursor: pointer; /*makes label clickable*/
+}
+/*==========================
+6) PAGES
+============================*/
 
-  .form {
-    flex-direction: column;
-  }
+/*------------------------
+ABOUT SECTION (CSS GRID)
+creates responsive layout
+image and text stack on mobile and
+form two columns on larger screens
+------------------------------*/
+.about-section img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px; /*soft rounded corners*/
 }
-
-/* --------------------
-   Responsive Breakpoints
---------------------- */
-@media (min-width: 768px) {
-  .hero-kicker {
-    font-size: 3rem;
-  }
-
-  .card-container {
-    grid-template-columns: repeat(4, 1fr);
-  }
+.about-text{
+    padding: 1rem; /*inside spacing in text box*/
+    max-width: 600px;/*improves readability*/
 }
-
-@media (max-width: 600px) {
-
-  .main-nav {
-    flex-direction: column;
-    gap: 0.75rem;
-  }
+/*------------------------------
+VALUES SECTION (FLEXBOX)
+displays feature cards describing values
+---------------------------------*/
+.about-values{
+    padding: 2rem; /*spacing around the section*/
+    text-align: center; /*centers text*/
 }
-
-#dataContainer {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
-  margin-top: 20px;
+.values-container {
+    display: flex; /*arranges cards in row/columns*/
+    flex-direction: column; /*stack cards vertically(mobile)*/
+    gap: 1.5rem; /* spacing between each card*/
+    margin-top: 1.5rem; /*space above the cards*/
 }
-#dataContainer .card{
-  background: #ffffff;
-  border: 1px solid #ddd;
-  padding: 15px;
-  border-radius: 10px; 
-  text-align: center;
+.value{
+    background: var(--light-grey); /*card background color*/
+    padding: 1.5rem; /*inner spacing inside card*/
+    border-radius: 10px; /*rounded corners*/
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08); /*subtle shadow for depth*/
 }
-#dataContainer img{
-  width: 100%;
-  height: 150px;
-  object-fit: cover;
-  border-radius: 8px;
-}
-
-#errorMessage{
-  color:red;
-}
-#dynamic-content {
-  margin: 40px auto;
-  padding: 2rem;
-  max-width: 900px;
-  text-align: center;
-}
-  
-/*===============================
+/*-----------------------
 CONTACT PAGE SPLIT LAYOUT
 Adds a two-column responsive design
-=================================*/
-
-.contact-layout {
-  display: grid;
-  grid-template-columns: 1fr;
-  min-height: 100vh;
-  padding: 4rem 1.5rem;
-  gap: 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
+----------------------------*/
 .contact-left {
   font-family: "Lora", serif;
   background-color: var(--green);
@@ -555,24 +665,10 @@ Adds interactivity*/
   opacity: 1;
 }
 
-
-/* Responsive layout (Tablet + Desktop)
-adjusts layout based on screen size*/
-@media (min-width: 1024px) {
-  .contact-layout {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-@media (prefers-reduced-motion: reduce){
-  *{
-    transition: none;
-  }
-}
-
-/*===============================
+/*--------------------------------
 MEDIA / REVIEWS PAGE:
 creates interactive experience
-==================================*/
+---------------------------------*/
 .media-intro{
   max-width: 700px;
   text-align:center; /*centers texts*/
@@ -615,24 +711,24 @@ only shows active content section
 .tab-content.active{
   display: block;/*shows when active*/
 }
-/*===================================
+/*-----------------------------
 VIDEO STYLING
 polishes and adds spacing
-====================================*/
+------------------------------*/
 video{
   border-radius: 12px;/*rounded edges*/
   margin-bottom: 1rem; /*space below video*/
 }
-/*===========================
+/*----------------------
 AUDIO PLAYER STYLING
-===============================*/
+-----------------------*/
 audio{
   width: 100%;/*full width to fill container*/
   margin: 1rem 0; /* vertical spacing*/
 }
-/*================================
+/*-------------------------
 REVIEW CARD (MEDIA PAGE)
-=================================*/
+--------------------------*/
 .review{
   background: var(--light-grey);/*soft background*/
   padding: 1rem;/*internal spacing*/
@@ -641,101 +737,16 @@ REVIEW CARD (MEDIA PAGE)
   text-align: center;
   transition: transform 0.3s ease;
 }
-/*============================
-CAROUSEL CONTAINER
-wraps slides and hides overflow
-===============================*/
-.carousel{
-  background: linear-gradient(135deg, #fff7fb, #f7f7ff);/*light color for dimension*/
-  padding: 2rem 1rem;/*spacing inside container*/
-  border-radius: 20px;/*rounded border*/
-  position: relative;/*allows positioning of navigation buttons inside*/
-  overflow: hidden;/*hides non-active slides*/
-  max-width: 500px; /*keeps carousel compact and readable*/
-  margin: 2rem auto;/*centers the carousel horizontally on the page*/
-}
-/*========================
-CAROUSEL TRACK
-holds all slides in a row 
-=========================*/
-.carousel-track{
-  display: flex;/*places slides side-by-side horizontally*/
-  transition: transform 0.4s ease;/*smooth animation when sliding*/
-}
-/*========================
-INDIVIDUAL SLIDE
-each review takes full width of carousel
-==========================*/
-.slide{
-  flex: 0 0 100%; /*ensures each slide takes 100% width*/
-
-  display: flex;/*centers review content inside slide*/
-  align-items: center;/*vertical centering*/
-  justify-content: center;/*horizontally centering*/
-}
-/*===========================
-CAROUSEL BUTTONS
-navigation arrows for user interaction
-============================*/
-.carousel-btn{
-  position: absolute;/*positions buttons on top of carousel*/
-  top: 50%; /*vertically centers button*/
-  transform: translateY(-50%);/*adjusts for perfect centering*/
-  background: var(--purple);/*brand color*/
-  color: var(--white);/*ensures contrast for accessibility*/
-  border: none;/*removes default button styling*/
-  padding: 0.5rem 0.75rem; /*increases clickable area*/
-  cursor: pointer;/*indicates interactivity*/
-  border-radius: 50%;/*circular button design*/
-}
-/*Left button*/
-.carousel-btn.prev{
-  left: 10px;/*places button slightly inside left edge*/
-}
-/*Right button*/
-.carousel-btn.next{
-  right: 10px;/*places button slightly inside right edge*/
-}
-/*Hover effect*/
-.carousel-btn:hover{
-  background: var(--green);/*changes color to show interactivity*/
-}
-/*===========================
-SCROLL ANIMATION
-adds motion as users scroll
-=============================*/
-.fade-in{
-  opacity: 0;/*hidden initially*/
-  transform: translateY(20px);/*slightly moved down*/
-  transition: 0.6s ease; /*smooth animation*/
-}
-.fade-in.visible{
-  opacity: 1;/*fully visible*/
-  transform: translateY(0);/*moves into place*/
-}
-
-/*============================
+/*--------------------------
 ACCESSIBILITY IMPROVEMENTS
-===============================*/
+----------------------------*/
 button{
   font-family: inherit;/*makes sure buttons inherit font styles*/
 }
-
-/*================================
-FORM ERROR MESSAGES
-Shows validation feedback clearly
-================================*/
-.error-message {
-  color: #b00020; /*red error color for visibility*/
-  font-size: 0.85rem; /*slightly smaller text*/
-  display: block; /*forces message onto its own line*/
-  margin-top: 4px; /*space above error text*/
-}
-
-/*================================
+/*------------------------------
 FORMSPREE SUCCESS MESSAGE
 Displays confirmation after submit
-===================================*/
+---------------------------------*/
 [data-fs-success] {
   background: #e6f9ec; /*light green success background*/
   border: 2px solid #4caf50; /*green border for emphasis*/
@@ -744,7 +755,6 @@ Displays confirmation after submit
   margin-bottom: 1rem; /*spacing below message*/
   color: #2e7d32; /*dark green text for contrast*/
 }
-
 /*Character counter under message*/
 #charCount {
   font-size: 0.8rem; /*small helper text*/
@@ -787,62 +797,234 @@ Improves usability + accessibility
   font-size: 1rem;
 }
 
-/*==================================
-FAQ ACCORDION
-interactive expand/collapse 
-===================================*/
-.faq {
-  background: transparent;
-  margin-top: 3rem; /*spacing above FAQ section*/
-}
-.faq-question {
-  width: 100%; /*full clickable width*/
-  text-align: left; /*aligns text left*/
-  padding: 12px; /*comfortable click area*/
-  background: var(--light-grey); /*neutral background*/
-  border: none; /*removes default border*/
-  cursor: pointer; /*indicates interactivity*/
-  margin-bottom: 5px; /*spacing between questions*/
+.contact-form > div,
+.contact-form h4,
+.checkbox-group {
+  margin-bottom: 1rem;
 }
 
-/*Hover interaction*/
-.faq-question:hover {
-  background: var(--green);/*highlights on hover*/
-  color: var(--white); /*ensures readability*/
+/* --------------------
+   Footer Navigation
+--------------------- */
+.footer-nav {
+  display: flex;
+  flex-direction: column; /*stacks links vertically*/
+  gap: 0.5rem; /*spacing between links*/
 }
-/*Hidden answer by default*/
-.faq-answer {
-  display: none; /*keeps content hidden initially*/
-  padding: 10px; /*spacing inside answer box*/
-  background: var(--dark-grey); /*clean readable background*/
+
+.footer-nav a {
+  text-decoration: none; /*removes underline*/
+  color: var(--white); /*matches footer text*/
+  font-size: 0.9rem; 
 }
-/*Visible when clicked*/
-.faq-answer.open {
-  display: block;/*reveals content*/
+
+.footer-nav a:hover {
+  color: var(--green); /*highlight color*/
 }
-/*CHECKBOX ALIGNMENT*/
-.checkbox-group{
-  margin-top: 10px; /*space above checkbox section*/
+
+/* --------------------
+   Bottom Bar
+--------------------- */
+.footer-bottom {
+  text-align: center; /*centers texts*/
+  margin-top: 2rem; /*space above*/
+  font-size: 0.85rem; /*smaller text*/
+  opacity: 0.85; /*slightly muted*/
 }
-.checkbox{
-  display: flex; /*puts box + text in a row*/
-  align-items: center; /*vertically centers them*/
-  font-size: 0.95rem;/*slightly cleaner sizing*/
-  cursor: pointer; /*makes label clickable*/
-}
-.form-row {
+
+#dataContainer {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+#dataContainer .card{
+  background: #ffffff;
+  border: 1px solid #ddd;
+  padding: 15px;
+  border-radius: 10px; 
+  text-align: center;
+}
+#dataContainer img{
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 8px;
 }
 
+#errorMessage{
+  color:red;
+}
+#dynamic-content {
+  margin: 40px auto;
+  padding: 2rem;
+  max-width: 900px;
+  text-align: center;
+}
+/*========================
+7) UTILITIES
+helpers + animations
+===========================*/
+/* utility alignment*/
+.button-center{
+  text-align: center; 
+  margin-top: 2rem;
+}
+
+/*-----------------------
+FADE ANIMATION
+adds motion as users scroll
+-------------------------*/
+.fade-in{
+  opacity: 0;/*hidden initially*/
+  transform: translateY(20px);/*slightly moved down*/
+  transition: 0.6s ease; /*smooth animation*/
+}
+.fade-in.visible{
+  opacity: 1;/*fully visible*/
+  transform: translateY(0);/*moves into place*/
+}
+/*------------------
+Error Message
+Shows validation feedback clearly
+----------------------*/
+.error-message {
+  color: #b00020; /*red error color for visibility*/
+  font-size: 0.85rem; /*slightly smaller text*/
+  display: block; /*forces message onto its own line*/
+  margin-top: 4px; /*space above error text*/
+}
+
+/*keyframe animation definition*/
+@keyframes fadeUp{
+  from{
+    opacity: 0;/*start invisible*/
+    transform: translateY(20px);/*start slightly below*/
+  }
+  to{
+    opacity: 1;/*fade in*/
+    transform: translateY(0); /*move into position*/
+  }
+}
+/*===========================
+  8) MEDIA QUERIES: 
+=============================*/
+ /*--------------------------
+ MEDIA QUERY (TABLET 600px ) 
+ tablet breakpoint
+ ---------------------------*/
+ @media (min-width:600px){
+  
+    .about-section{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        align-items: center; /*vertically centers content*/
+        gap: 3rem;
+
+    }
+    .about-section img{
+        width: 100%; 
+        height: auto;
+    }
+
+    .values-container{
+        flex-direction: row; /*horizontal layout*/
+        justify-content: space-between; /*evenly spaces cards across row*/
+    }
+    .value{
+        flex: 1; /*cards take equal width in row*/
+    }
+    .hero-inner h1{
+        font-size: 2.8rem; /*larger heading for tablet screens*/
+    }
+ }
+ @media (max-width: 600px) {
+
+  .main-nav {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+}
+ /*--------------------
+ MEDIA QUERY (500)
+ ---------------------*/
+ @media (max-width: 500px) {
+  .footer-container {
+    grid-template-columns: 1fr; /* stack */
+  }
+
+  .form {
+    flex-direction: column;
+  }
+}
+
+ /*---------------------
+ Media Query (768px)
+ ------------------------*/
+ @media (max-width: 768px) {
+  .desktop-nav {
+    display: none;
+  }
+
+  .mobile-toggle {
+    display: block;
+  }
+}
 @media (min-width: 768px) {
   .form-row {
     grid-template-columns: 1fr 1fr;
   }
 }
-.contact-form > div,
-.contact-form h4,
-.checkbox-group {
-  margin-bottom: 1rem;
+@media (min-width: 768px) {
+  .hero-kicker {
+    font-size: 4rem;
+  }
+
+  .card-container {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+ /*---------------------------
+ MEDIA QUERY 2 (DESKTOP 900px)
+ desktop breakpoint
+ ----------------------------*/
+ @media (min-width:900px){
+ header{
+    padding: 1.25rem 3rem; /*horizontal padding for desktop*/
+ }
+ .about-section{
+    padding: 3rem 5rem; /*more spacing inside section*/
+ }
+
+ .values-container{
+    gap: 2rem; /*slightly larger spacing between cards*/
+ }
+ .hero-inner h1{
+    font-size: 3.2rem; /*bigger hero heading for desktop*/
+ }
+}
+@media (max-width: 900px) {
+  .footer-container {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns */
+  }
+}
+
+/*-----------------------
+ Responsive layout (Tablet + Desktop)
+adjusts layout based on screen size
+--------------------------*/
+@media (min-width: 1024px) {
+  .contact-layout {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+/*------------------------
+ACCESSIBILITY
+---------------------------*/
+@media (prefers-reduced-motion: reduce){
+  *{
+    transition: none !important;
+    animation: none !important;
+    scroll-behavior: auto !important;
+  }
 }
