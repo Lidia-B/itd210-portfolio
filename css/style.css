@@ -48,7 +48,7 @@ h1,h2,h3{
   line-height: 1.2; /*tighter heading spacing*/
 }
 p {
-  font-size: 1rem;/* slightly bigger letters*/
+  font-size: 20px;/* slightly bigger letters*/
   max-width: 65ch; /*improves readability*/
 }
 /*-------------------------------
@@ -413,6 +413,7 @@ styles links and adds hover effects
   background-color: var(--purple); /*brand background*/
   color: var(--white); /* readable text */
   padding: 2.5rem 1.5rem 1.5rem;/* spacing inside footer*/
+  font-size: 1.1rem;
 }
 
 /* each column */
@@ -420,6 +421,7 @@ styles links and adds hover effects
 .footer-col h3 {
   font-family: "Lora", serif; /*consistent heading font*/
   margin-bottom: 0.75rem; /*spacing below headings*/
+  font-size: 1rem;
 }
 
 .footer-col p {
