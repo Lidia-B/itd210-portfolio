@@ -162,6 +162,7 @@ activated when mobile layout is activated
   height: 60vh; /*uses 60% of screen height*/
   object-fit: cover; /*prevents stretching*/
   display: block;
+  object-position: center;/*centers image for better positioning*/
 }
 
 /*----------------------------
@@ -632,17 +633,26 @@ Adds a two-column responsive design
   margin-bottom: 2rem;
 }
 .contact-right {
-  font-family: inherit;
   position: relative;
-  border-radius: 16px;
-  overflow: hidden; /*important so images respects rounding*/
+  width: 100%;
 }
 
+/* Contact image */
 .contact-right img {
   width: 100%;
-  height: 100%;
+  height: 600px;
+
   object-fit: cover;
+  object-position: center;
+
+  border-radius: 20px;
+
+  display: block;
 }
+/*AI ASSISTANCE 
+Tool:ChatGPT
+DATE:5/10/2026
+To fix over lay and right side image of contact.html*/
 
 /* CONTACT PAGE MAP OVERLAY
 Hidden by default and appears on hover or keyboard focus.
@@ -650,15 +660,21 @@ Adds interactivity*/
 
 .map-overlay {
   position: absolute;
-  bottom: 20px;
-  left: 20px;
-  backdrop-filter: blur(4px);
-  background: rgba(0, 0, 0, 0.619);
+
+  bottom: 30px;
+  left: 30px;
+
+  background: rgba(0, 0, 0, 0.7);
   color: white;
-  padding: 1rem;
-  border-radius: 8px;
+
+  padding: 1rem 1.5rem;
+
+  border-radius: 12px;
+
   opacity: 0;
   transition: opacity 0.3s ease;
+
+  z-index: 2;
 }
 
 .contact-right:hover .map-overlay {
@@ -679,12 +695,21 @@ creates interactive experience
   margin: 0 auto;
   padding: 2rem 1rem; /*internal spacing*/
 }
+#video,
+#audio,
+#text {
+  max-width: 900px;
+  margin: auto;
+  padding: 2rem 1.5rem;
+  text-align: center;
+}
 /*Tabs button container*/
 .tab-buttons {
   display: flex; /*flex layout*/
   gap: 1rem; /*space between buttons*/
   margin-bottom: 1.5rem; /*space between tabs*/
   flex-wrap: wrap; /* allows wrapping on small screens*/
+  justify-content: center;/*centers buttons on page*/
 }
 /* Tab button style*/
 .tab{
@@ -794,6 +819,7 @@ Improves usability + accessibility
 }
 .contact-form{
   width: 100%;
+  overflow-x: hidden;
 }
 /*Focus State (accessibility)*/
 .contact-form input:focus,
@@ -801,13 +827,15 @@ Improves usability + accessibility
   border-color: var(--purple);/*highlights active field*/
   outline: none; /*removes default browser outline*/
 }
-
+.contact-left p,
 .contact-form label,
 .contact-form input,
 .contact-form textarea,
 .contact-form select,
 .contact-form small,
-.contact-form button {
+.contact-form button,
+.contact-info-box p,
+.faq-answer {
   font-size: 1rem;
 }
 
@@ -951,6 +979,21 @@ Shows validation feedback clearly
     .hero-inner h1{
         font-size: 2.8rem; /*larger heading for tablet screens*/
     }
+      .contact-layout {
+    padding: 2rem 1rem;
+  }
+  .contact-left {
+    padding: 1.5rem;
+  }
+
+  .contact-form {
+    font-size: 1rem;
+  }
+
+  .cta-button {
+    width: 100%;
+    text-align: center;
+  }
  }
  @media (max-width: 600px) {
 
