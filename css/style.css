@@ -581,9 +581,9 @@ image and text stack on mobile and
 form two columns on larger screens
 ------------------------------*/
 .about-section img{
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    width: 100%;/*makes image fill container width*/
+    height: 100%;/*makes image fill container height*/
+    object-fit: cover; /*crops image without stretching*/
     border-radius: 10px; /*soft rounded corners*/
 }
 .about-text{
@@ -615,39 +615,39 @@ CONTACT PAGE SPLIT LAYOUT
 Adds a two-column responsive design
 ----------------------------*/
 .contact-left {
-  font-family: inherit;
-  background-color: var(--green);
-  color: var(--white);
-  padding: 2rem;
-  border-radius: 16px;
-  overflow: hidden;
+  font-family: inherit; /*keeps font consistent*/
+  background-color: var(--green); /*sets background-color green*/
+  color: var(--white);/*makes text readable on dark background*/
+  padding: 2rem; /*adds internal spacing*/
+  border-radius: 16px; /*rounds corners*/
+  overflow: hidden; /*prevents content overflow*/
 }
 .contact-left h1{
-  font-family: inherit;
-  font-size: clamp(2rem, 5vw, 2.5rem);
-  margin-bottom: 1rem;
+  font-family: inherit; /*keeps font consistent*/
+  font-size: clamp(2rem, 5vw, 2.5rem);/*responsive font sizing*/
+  margin-bottom: 1rem;/*adds space below heading*/
 }
 .contact-left p{
-  font-family: inherit;
-  max-width: 500px;
-  margin-bottom: 2rem;
+  font-family: inherit;/*keeps font consistent*/
+  max-width: 500px; /*limits line length*/
+  margin-bottom: 2rem; /*adds spacing below text*/
 }
 .contact-right {
-  position: relative;
-  width: 100%;
+  position: relative; /*allows overlay positioning if needed*/
+  width: 100%; /*make container full width*/
 }
 
 /* Contact image */
 .contact-right img {
-  width: 100%;
-  height: 600px;
+  width: 100%; /*makes image responsive*/ 
+  height: 600px; /*sets fixed height for layout balance*/
 
-  object-fit: cover;
-  object-position: center;
+  object-fit: cover;/*crops image to fill space nicely*/
+  object-position: center; /*keeps focus centered*/
 
-  border-radius: 20px;
+  border-radius: 20px;/*round image corners*/
 
-  display: block;
+  display: block; /*removes extra spacing under image*/
 }
 /*AI ASSISTANCE 
 Tool:ChatGPT
