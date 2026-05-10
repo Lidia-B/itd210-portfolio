@@ -651,9 +651,8 @@ Adds a two-column responsive design
 }
 /*AI ASSISTANCE 
 Tool:ChatGPT
-DATE:5/10/2026
+DATE:5/10/26
 To fix over lay and right side image of contact.html*/
-
 /* CONTACT PAGE MAP OVERLAY
 Hidden by default and appears on hover or keyboard focus.
 Adds interactivity*/
@@ -951,74 +950,120 @@ Shows validation feedback clearly
 /*===========================
   8) MEDIA QUERIES: 
 =============================*/
- /*--------------------------
- MEDIA QUERY (TABLET 600px ) 
- tablet breakpoint
- ---------------------------*/
- @media (min-width:600px){
-  
-    .about-section{
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        align-items: center; /*vertically centers content*/
-        gap: 3rem;
+/* =========================
+   TABLET (768px and up)
+========================= */
+@media (min-width: 768px) {
 
-    }
-    .about-section img{
-        width: 100%; 
-        height: auto;
-    }
-
-    .values-container{
-        flex-direction: row; /*horizontal layout*/
-        justify-content: space-between; /*evenly spaces cards across row*/
-    }
-    .value{
-        flex: 1; /*cards take equal width in row*/
-    }
-    .hero-inner h1{
-        font-size: 2.8rem; /*larger heading for tablet screens*/
-    }
-      .contact-layout {
-    padding: 2rem 1rem;
-  }
-  .contact-left {
-    padding: 1.5rem;
+  /* HERO TEXT */
+  .hero-kicker {
+    font-size: 3rem;
   }
 
-  .contact-form {
-    font-size: 1rem;
+  .hero-inner h1 {
+    font-size: 2.8rem;
   }
 
-  .cta-button {
+  /* ABOUT SECTION */
+  .about-section {
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+  }
+
+  .about-section img {
     width: 100%;
-    text-align: center;
+    height: auto;
   }
- }
- @media (max-width: 600px) {
 
+  /* VALUES ROW */
+  .values-container {
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+
+  .value {
+    flex: 1;
+  }
+
+  /* CARD GRID */
+  .card-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* CONTACT LAYOUT (FIXED) */
+  .contact-layout {
+    grid-template-columns: 1fr 1fr;
+    padding: 3rem 2rem;
+    align-items: stretch;
+  }
+
+  .contact-left {
+    padding: 2rem;
+  }
+
+  /* FORM ROW */
+  .form-row {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  /* FOOTER */
+  .footer-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* NAVIGATION */
+  .desktop-nav {
+    display: flex;
+  }
+
+  .mobile-toggle {
+    display: none;
+  }
+}
+
+/* =========================
+   DESKTOP (1024px and up)
+========================= */
+@media (min-width: 1024px) {
+
+  /* HERO */
+  .hero-inner h1 {
+    font-size: 3.2rem;
+  }
+
+  /* HEADER SPACING */
+  header {
+    padding: 1.25rem 3rem;
+  }
+
+  /* ABOUT SECTION */
+  .about-section {
+    padding: 3rem 5rem;
+  }
+
+  /* CARD GRID */
+  .card-container {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  /* FOOTER FULL WIDTH */
+  .footer-container {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* =========================
+   MOBILE ONLY (below 768px)
+========================= */
+@media (max-width: 768px) {
+
+  /* NAV STACK FIX */
   .main-nav {
     flex-direction: column;
     gap: 0.75rem;
   }
-}
- /*--------------------
- MEDIA QUERY (500)
- ---------------------*/
- @media (max-width: 500px) {
-  .footer-container {
-    grid-template-columns: 1fr; /* stack */
-  }
 
-  .form {
-    flex-direction: column;
-  }
-}
-
- /*---------------------
- Media Query (768px)
- ------------------------*/
- @media (max-width: 768px) {
   .desktop-nav {
     display: none;
   }
@@ -1026,53 +1071,28 @@ Shows validation feedback clearly
   .mobile-toggle {
     display: block;
   }
-}
-@media (min-width: 768px) {
-  .form-row {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-@media (min-width: 768px) {
-  .hero-kicker {
-    font-size: 4rem;
-  }
 
-  .card-container {
-    grid-template-columns: repeat(4, 1fr);
-  }
-}
- /*---------------------------
- MEDIA QUERY 2 (DESKTOP 900px)
- desktop breakpoint
- ----------------------------*/
- @media (min-width:900px){
- header{
-    padding: 1.25rem 3rem; /*horizontal padding for desktop*/
- }
- .about-section{
-    padding: 3rem 5rem; /*more spacing inside section*/
- }
-
- .values-container{
-    gap: 2rem; /*slightly larger spacing between cards*/
- }
- .hero-inner h1{
-    font-size: 3.2rem; /*bigger hero heading for desktop*/
- }
-}
-@media (max-width: 900px) {
-  .footer-container {
-    grid-template-columns: repeat(2, 1fr); /* 2 columns */
-  }
-}
-
-/*-----------------------
- Responsive layout (Tablet + Desktop)
-adjusts layout based on screen size
---------------------------*/
-@media (min-width: 1024px) {
+  /* CONTACT STACK */
   .contact-layout {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =========================
+   SMALL MOBILE (500px)
+========================= */
+@media (max-width: 500px) {
+
+  .footer-container {
+    grid-template-columns: 1fr;
+  }
+
+  .form {
+    flex-direction: column;
+  }
+
+  .cta-button {
+    width: 100%;
   }
 }
 /*------------------------
