@@ -45,6 +45,15 @@ https://formspree.io/f/mvzlkdlv
 -Accessible error and success messages
 -No backend required (serverless form handling)
 
+## FINAL REFLECTION
+My strongest part of my final site is the Reviews page with its interactive media experience(video,audio,carousel, and tab system). This stands out because it combines multiple forms of content in one place. Allowing users to choose how they want to engage with the information.
+
+I learned that responsive design is not only about shrinking content, but making layouts usable and balanced across different sized devices.
+
+All feedback was valuable, I took it seriously, made changes throughout the project and learned.
+
+If I had another month, I would focus on the site's visual polish and learning how to advance interactivity. Improving animations so transitions feel smoother and intentional.
+
 ## Notes
 All images are AI-generated for educational purposes.
 
