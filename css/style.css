@@ -1105,3 +1105,47 @@ ACCESSIBILITY
     scroll-behavior: auto !important;
   }
 }
+/* =========================
+   DARK MODE:
+   Enables a dark screen 
+========================= */
+/*AI ASSITANCE
+TOOL:ChatGPT
+Date:5/10/2026
+WHERE:Dark mode: stylesheet and script.js
+Use: teach me step by step how to apply dark mode*/
+body.dark-mode {
+  background-color: #121212;
+  color: #f5f5f5;
+}
+
+/* headers + nav */
+body.dark-mode header {
+  background-color: #1e1e1e;
+}
+
+body.dark-mode .main-nav a {
+  color: #f5f5f5;
+}
+
+/* cards */
+body.dark-mode .card,
+body.dark-mode .review,
+body.dark-mode .value {
+  background-color: #1f1f1f;
+  color: #f5f5f5;
+}
+
+/* footer */
+body.dark-mode .site-footer {
+  background-color: #1e1e1e;
+}
+
+/* contact page */
+body.dark-mode .contact-left {
+  background-color: #2a2a2a;
+}
+
+body.dark-mode .contact-right {
+  background-color: #1a1a1a;
+}
